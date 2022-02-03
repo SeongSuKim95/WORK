@@ -105,7 +105,7 @@ __중요한 논문은 bold체__
 
 ## Sketch
 Facts를 기반으로 Idea를 구상한다.
-
+ddddd
 ## Implemetation
 구상한 Idea를 구현해보고 결과를 확인한다.
 

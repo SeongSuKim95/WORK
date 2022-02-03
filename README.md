@@ -39,7 +39,7 @@
 
 ## 개념별로 논문들을 분류한다. 
 *읽은 것은 이탤릭체*  
-__중요한 논문은 bold체__
+__그 중에서도 중요한 논문은 + bold체__
 
 1. Attention + CNN
    1. Attention augmented convolutional networks

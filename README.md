@@ -52,7 +52,7 @@ __그 중에서도 중요한 논문은 + bold체__
    4. (DeiT) Training data-efficient image transformers & distillation through attention
 3. Nature of Transformer
    1. When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations
-   2. *__Do vision transformers see like convolutional neural networks?__*
+   2. *__Do vision transformers see like convolutional neural networks?__*[Summary](#32-do-vision-transformers-see-like-convolutional-neural-networks)
    3. On the Expressive Power of Self-Attention Matrices
    4. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
    5. (LayerNorm) On Layer Normalization in the Transformer Architecture
@@ -105,7 +105,7 @@ __그 중에서도 중요한 논문은 + bold체__
 ## 1. Attention + CNN 
 ## 2. About Transformer 
 ## 3. Nature of Transformer 
-  - 3.2 Do Vision Transformers See Like Convolutional Neural Networks?
+  - ## 3.2 Do Vision Transformers See Like Convolutional Neural Networks?
     - 주제
       - Vision transformer가 "무엇"을 "어떻게" 학습하는지 CNN과 비교하여 직관적으로 이해하기 좋게 visualize한 논문
     - 핵심 내용

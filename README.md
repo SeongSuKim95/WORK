@@ -14,27 +14,14 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 1/29 ~ 02/05 Positional Encoding
-  - __On the relationship between self-attention and convolution layers (ICLR 2020)__ [LINK](https://arxiv.org/abs/1911.03584)
-    - __Supplementary__ [LINK](http://jbcordonnier.com/posts/attention-cnn/)
-  - __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__ [LINK](https://arxiv.org/abs/2111.01353)
-  - __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [LINK](https://openreview.net/forum?id=onxoVA9FxMw)
-  - __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [LINK](https://arxiv.org/abs/2006.15595)
-  - __Do we Really Need Explicit Position Encodings for Vision Transformers? (21/02/22)__ 
-    - Conditional Positional Encodings for Vision Transformers (21/03/18 revised version) [LINK](https://arxiv.org/abs/2102.10882)
-  - __Rethinking and Improving Relative Position Encoding for Vision Transformer(ICCV 2021, 21/07/29)__ [LINK](https://arxiv.org/abs/2107.14222)
-  - Stand-Alone self-Attention in Vision models (NIPS 2019, 2019/06/13) [LINK](https://arxiv.org/abs/1906.05909)
-  - __Self-Attention with Relative Position Representations (NAACL 2018, 2018/03/06)__ [LINK](https://arxiv.org/abs/1803.02155)
-  - What do position embeddings Learn? An Empirical Study of Pre-Trained Language Model Positional Encoding (EMNLP 2020, 2020/09/28) [LINK](https://arxiv.org/abs/2010.04903)
-  - Improve Transformer Models with Better Relative Position Embeddings(EMNLP 2020 ,20/09/28) [LINK](https://arxiv.org/abs/2009.13658)
-- 02/05 ~ 02/11 Injecting bias to Transformer
-  - Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [LINK](https://arxiv.org/abs/2104.12533)
-  - ConViT: Improving Vision Transformer with Soft Convolutional Inductive Biases
-  - CMT : Convolutional Neural Networks Meet Vision Transformers
-  - LocalViT : Bringing Locality to Vision Transformers
-  - __Swin Transformer : Hierarchical Vision Transformer using Shifted Window__
-  - CvT : Introducing Convolutions to Vision Transformers
-
+- 02/07 ~ 02/14 Injecting bias to Transformer
+   1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [[LINK]](http://openaccess.thecvf.com/content/ICCV2021/html/Chen_Visformer_The_Vision-Friendly_Transformer_ICCV_2021_paper.html)
+   2. ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)[[LINK]](https://arxiv.org/abs/2103.10697)
+   3. CMT : Convolutional Neural Networks Meet Vision Transformers (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
+   4. LocalViT : Bringing Locality to Vision Transformers (arxiv,2021/04/12)[[LINK]](https://arxiv.org/abs/2104.05707)
+   5. Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
+   6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
+   7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
 # Groups
 
 ## 개념별로 논문들을 분류한다. 
@@ -57,36 +44,37 @@ __그 중에서도 중요한 논문은 + bold체__
    4. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
    5. (LayerNorm) On Layer Normalization in the Transformer Architecture
 4. Positional Encoding of Transformer
-   1. *__On the relationship between self-attention and convolution layers (ICLR 2020)__* [LINK](https://arxiv.org/abs/1911.03584)
-      - Supplementary [LINK](http://jbcordonnier.com/posts/attention-cnn/)
-   2. *Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)* [LINK](https://arxiv.org/abs/2111.01353)
-   3. *__On position embeddings in BERT(ICLR 2021, 20/09/29)__* [LINK]()
-   4. __*Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)*__ [LINK](https://arxiv.org/abs/2006.15595)
+   1. *__On the relationship between self-attention and convolution layers (ICLR 2020)__* [[LINK]](https://arxiv.org/abs/1911.03584)
+      - Supplementary [[LINK]](http://jbcordonnier.com/posts/attention-cnn/)
+   2. *Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)* [[LINK]](https://arxiv.org/abs/2111.01353)
+   3. *__On position embeddings in BERT(ICLR 2021, 20/09/29)__* [[LINK]](https://openreview.net/forum?id=onxoVA9FxMw)
+   4. __*Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)*__ [[LINK]](https://arxiv.org/abs/2006.15595)
    5. *Do we Really Need Explicit Position Encodings for Vision Transformers?* (21/02/22) 
-      - Conditional Positional Encodings for Vision Transformers (21/03/18 revised version) [LINK](https://arxiv.org/abs/2102.10882)
-   6. *__Rethinking and Improving Relative Position Encoding for Vision Transformer__*(ICCV 2021, 21/07/29) [LINK](https://arxiv.org/abs/2107.14222)
-   7. *Stand-Alone self-Attention in Vision models* (NIPS 2019, 2019/06/13) [LINK](https://arxiv.org/abs/1906.05909)
-   8. Self-Attention with Relative Position Representations (NAACL 2018, 2018/03/06) [LINK](https://arxiv.org/abs/1803.02155)
-   9. What do position embeddings Learn? An Empirical Study of Pre-Trained Language Model Positional Encoding (EMNLP 2020, 2020/09/28) [LINK](https://arxiv.org/abs/2010.04903)
-   10. Improve Transformer Models with Better Relative Position Embeddings(EMNLP 2020 ,20/09/28) [LINK](https://arxiv.org/abs/2009.13658)
+      - Conditional Positional Encodings for Vision Transformers (21/03/18 revised version) [[LINK]](https://arxiv.org/abs/2102.10882)
+   6. *__Rethinking and Improving Relative Position Encoding for Vision Transformer__*(ICCV 2021, 21/07/29) [[LINK]](https://arxiv.org/abs/2107.14222)
+   7. *Stand-Alone self-Attention in Vision models* (NIPS 2019, 2019/06/13) [[LINK]](https://arxiv.org/abs/1906.05909)
+   8. *Self-Attention with Relative Position Representations* (NAACL 2018, 2018/03/06) [[LINK]](https://arxiv.org/abs/1803.02155)
+   9. *What do position embeddings Learn? An Empirical Study of Pre-Trained Language Model Positional Encoding (EMNLP 2020, 2020/09/28)* [[LINK]](https://arxiv.org/abs/2010.04903)
+   10. Improve Transformer Models with Better Relative Position Embeddings(EMNLP 2020 ,20/09/28) [[LINK]](https://arxiv.org/abs/2009.13658)
 5. Injecting bias to Transformer via structure change
-   1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [LINK](https://arxiv.org/abs/2104.12533)
-   2. ConViT: Improving Vision Transformer with Soft Convolutional Inductive Biases
-   3. CMT : Convolutional Neural Networks Meet Vision Transformers
-   4. LocalViT : Bringing Locality to Vision Transformers
-   5. Swin Transformer : Hierarchical Vision Transformer using Shifted Window
-   6. CvT : Introducing Convolutions to Vision Transformers
+   1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [[LINK]](http://openaccess.thecvf.com/content/ICCV2021/html/Chen_Visformer_The_Vision-Friendly_Transformer_ICCV_2021_paper.html)
+   2. ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)[[LINK]](https://arxiv.org/abs/2103.10697)
+   3. CMT : Convolutional Neural Networks Meet Vision Transformers (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
+   4. LocalViT : Bringing Locality to Vision Transformers (arxiv,2021/04/12)[[LINK]](https://arxiv.org/abs/2104.05707)
+   5. Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
+   6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
+   7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
 6. Using Transformer in Re-ID 
 
 # Supplementary 
 - Transformer
-  - Illustrated Transformer [LINK](https://jalammar.github.io/illustrated-transformer/)
-  - Illustrated ViT [LINK](https://medium.com/analytics-vidhya/illustrated-vision-transformers-165f4d0c3dd1)
-  - Swin Transformer [LINK](https://www.youtube.com/watch?v=2lZvuU_IIMA)
+  - Illustrated Transformer [[LINK]](https://jalammar.github.io/illustrated-transformer/)
+  - Illustrated ViT [[LINK]](https://medium.com/analytics-vidhya/illustrated-vision-transformers-165f4d0c3dd1)
+  - Swin Transformer [[LINK]](https://www.youtube.com/watch?v=2lZvuU_IIMA)
 - Positional Embedding
-  - Master Positional Encoding : Part 1 [LINK](https://towardsdatascience.com/master-positional-encoding-part-i-63c05d90a0c3)
-  - Master Positional Encoding : Part 2 [LINK](https://towardsdatascience.com/master-positional-encoding-part-ii-1cfc4d3e7375) 
-  - AI coffee break playlist [LINK](https://www.youtube.com/watch?v=1biZfFLPRSY&list=PLpZBeKTZRGPOQtbCIES_0hAvwukcs-y-x)
+  - Master Positional Encoding : Part 1 [[LINK]](https://towardsdatascience.com/master-positional-encoding-part-i-63c05d90a0c3)
+  - Master Positional Encoding : Part 2 [[LINK]](https://towardsdatascience.com/master-positional-encoding-part-ii-1cfc4d3e7375) 
+  - AI coffee break playlist [[LINK]](https://www.youtube.com/watch?v=1biZfFLPRSY&list=PLpZBeKTZRGPOQtbCIES_0hAvwukcs-y-x)
   
 # Process
 
@@ -138,6 +126,11 @@ __그 중에서도 중요한 논문은 + bold체__
           - 오른쪽 그림
             - GAP ; First token 과 GAP ; GAP 는 결과적으론 마지막 layer에서 비슷한 성능을 내지만, First token(CLS token)의 경우 그림 5의 학습과정 때문인지 후반부 layer에서 test 성능이 급격히 증가하는 것을 알 수 있다. 반면에, GAP ; GAP는 어느 구간의 layer에서도 test 성능이 꾸준히 높다. 즉, GAP로 학습을 수행해도 그림 5에서 CLS token과 patch token의 학습 차이는 존재한다. 
             - CLS; GAP except CLS token과 CLS; GAP를 보면 전자가 미세하지만 전 구간에 대해 성능이 높게 측정됨을 알 수 있다. GAP를 사용할 때 CLS token의 역할이 다른 token들 보다 약하다는 증거로 볼 수 있다.
+        - ![Fig13](https://user-images.githubusercontent.com/62092317/152740247-545a0cf7-75e9-49e7-bf43-3483d5bf743e.png)
+          -  ViT를 CLS token으로 train 시킬 때, GAP로 train 시킬때에 대해서 각 token들로 classification을 했을 때 accuracy를 나타낸 것
+          - 앞서 봤던 그래프에서의 결과와 동일한 양상을 보이는데(y axis 값 주의), 두 경우 모두 Layer 6까지는 비슷한 경향을 보인다는 것에 집중
+          - (중요)이를 통해 학습의 차이가 classifier단과 가까운 layer에서 매우 크게 존재하고, 그 이전 layer까지는 비슷하게 학습이 진행된다고 볼 수 있다.
+
       7. Train data가 충분하지 않을 때, ViT는 higher layer에서 충분한 representation을 학습하지 못한다.  
       - ![Fig8](https://user-images.githubusercontent.com/62092317/152669775-ee928377-9323-41e3-bcfb-c88599e779cc.png)
         - 반면에 data의 양에 상관 없이, lower layer에서의 representation은 유지된다.
@@ -155,7 +148,11 @@ __그 중에서도 중요한 논문은 + bold체__
       - Data의 size가 ViT의 intermediate representation 학습을 결정하는데, imbalance한 ReID dataset에 대해서는 어떨지 생각해보아야 한다.
    - 3.3 논문은 __ViT의 원 논문__ 인데, 나에게 Transformer 그 자체보다는 Inductive bias 라는 개념을 좀 더 확고하게 잡게 해준 논문이다.
    - 3.4 와 3.5만 읽으면 ViT의 모든 부분을 한번씩은 살펴봤다고 볼 수 있겠다. 이 부분은 Inductive bias 관점 보다는 ReID에서 사용되었던 normalization과 엮어 나가면 괜찮을 것으로 보인다. 시간이 꽤 걸리는 작업일 것이라 잠깐 미뤄둔다. 
-## 4. Positional Encoding of Transformer  
+## 4. Positional Encoding of Transformer 
+  - ## 4.3 On position Embeddings in BERT
+    - NLP 영역에서 BERT가 여러가지 positional embedding 방법에 따라 어떻게 학습되는지를 visualize한 논문으로, 매우 유용한 정보가 많다.__ 3.2 논문 급으로 자주 열어볼 필요가 있다. 심지어, positional embedding의 property를 3가지로 구분하여 각각에 대한 실험 결과를 나열해놓았다. 하나 주의할 점은, language에 기반하여 해석이 이루어지고 있으므로 이것이 image domain에서도 해당되는지를 숙지하며 읽어야 한다.
+    - Classification 부분을 분석하는 것이 핵심이다. CLS token과 positional embedding과의 관계가 면밀히 분석되어 있다. )__CLS token은 special token인데 여기에 positional embedding이 함께 적용하는 것이 nonsense 이기 때문이다.__(추후 정리 예정)
+    - 다른 task는 몰라도, classification 같은 경우 language와 image의 차이가 크지 않을것이라고 예상된다. 지금까지 읽은 논문의 자료를 모으면 가장 효율적인 positional embedding 방안을 찾을 수 있을 것 같다.
   - 4.1와 4.2 논문은 연계된 내용으로 attention mechanism이 convolution을 수행할 수 있는가?를 실험적으로 증명한다.
     - 4.1는 __pixel 단위의 attention mechanism__ 이 convolution과 동일하게 동작할 수 있도록 하는 relative position encoding parameter를 수식적으로 유도해낸다.
     - 4.2는 __patch 단위의 attention mechanism__ 이 (현재 거의 모든 vision transformer의 방식) convolution과 동일하게 동작할 수 있음을 실험적으로 증명한다. 또한, __transformer가 스스로 이를 학습해 나간다는 점에서 지금까지 CNN이 초반부 layer에 locality라는 inductive bias를 주었던 것이 classification task에 대해 올바른 inductive bias였음을 증명했다__ 는 점에서 강력한 근거로 사용할 수 있다. 
@@ -170,10 +167,6 @@ __그 중에서도 중요한 논문은 + bold체__
       - __이 사실을 깨달은 것이 매우 중요하다. "막연하게 positional embedding이 locality inductive bias가 될 수 있지 않을까?" 라는 생각이 "ViT 에선 Inductive bias를 주기 위해 positional embedding을 설계해야 한다" 라는 확신으로 바뀌기 때문이다.__
       - 즉 내가 할일은 기존 CNN에서 사람들이 ReID를 잘 수행하기 위해 network에 주었던 specific한 inductive bias가 있다면 이를 찾고, 이를 positional embedding에 반영할 수 있는 방법을 찾는 것이다.  
     - 한가지 주의해야할 점이 있다. __위 두 논문은, linear probing 단계에서 둘다 GAP를 사용하여 성능을 측정하였다. 3.2 논문의 실험 결과와 연결지어 생각해보고 논리 전개의 모순이 있는지 확인해야 한다.__ 
-  - __4.3 논문은 NLP 영역에서 BERT가 여러가지 positional embedding 방법에 따라 어떻게 학습되는지를 visualize한 논문으로, 매우 유용한 정보가 많다.__ 3.2 논문 급으로 자주 열어볼 필요가 있다. 심지어, positional embedding의 property를 3가지로 구분하여 각각에 대한 실험 결과를 나열해놓았다. 하나 주의할 점은, language에 기반하여 해석이 이루어지고 있으므로 이것이 image domain에서도 해당되는지를 숙지하며 읽어야 한다.
-    - Classification 부분을 분석하는 것이 핵심이다. CLS token과 positional embedding과의 관계가 면밀히 분석되어 있다. )__CLS token은 special token인데 여기에 positional embedding이 함께 적용하는 것이 nonsense 이기 때문이다.__(추후 정리 예정)
-    - 다른 task는 몰라도, classification 같은 경우 language와 image의 차이가 크지 않을것이라고 예상된다. 지금까지 읽은 논문의 자료를 모으면 가장 효율적인 positional embedding 방안을 찾을 수 있을 것 같다.
-    - [TO DO] 깨달은 것들이 많았는데 다른 논문들의 내용과 겹쳐서 정리가 잘 되지 않는다. 다시 읽고 내용을 다른 논문과 연결시켜 정리하자. 매우 중요한 과정으로 생각 된다.
   - 4.4 논문은 4.3 논문과 연계된 논문은 아니지만, 이어서 읽으면 큰 도움이 된다. 이 논문 역시 NLP영역을 다루고 있다.
     - 4.3에서도 다루었던 __CLS token과 다른 token들간의 relation position 문제를 다루는 가장 간단하면서도 효율적으로 보이는 방법(parameter masking)__ 을 제시한다. 읽고 나면 왜 이 생각을 안해봤지 싶다. __이 방법은 image에 대해서도 유효할 것으로 판단된다.__ 
     - Key, Query간의 내적에 의해 발생하던 content 과 postion 정보간 correlation이 의미 없다고 판단하고, 이를 없애기 위해 content와 position의 연산을 독립적으로 수행한다. 개인적으로 매우 설득력 있다고 생각한다. __특정 단어가 문장의 몇번째 위치에 와야한다는 발상 자체가 nonsense이기 때문이다.__ 나도 이 term들의 역할이 궁금했는데, 어느정도 해소되었다.

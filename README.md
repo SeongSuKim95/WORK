@@ -16,10 +16,10 @@
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
 - 02/07 ~ 02/14 Injecting bias to Transformer
    1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [[LINK]](http://openaccess.thecvf.com/content/ICCV2021/html/Chen_Visformer_The_Vision-Friendly_Transformer_ICCV_2021_paper.html)
-   2. ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)[[LINK]](https://arxiv.org/abs/2103.10697)
+   2. __ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)__[[LINK]](https://arxiv.org/abs/2103.10697)
    3. CMT : Convolutional Neural Networks Meet Vision Transformers (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
    4. LocalViT : Bringing Locality to Vision Transformers (arxiv,2021/04/12)[[LINK]](https://arxiv.org/abs/2104.05707)
-   5. Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
+   5. __Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)__[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
    6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
    7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
 # Groups
@@ -43,6 +43,7 @@ __그 중에서도 중요한 논문은 + bold체__
    3. On the Expressive Power of Self-Attention Matrices
    4. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
    5. (LayerNorm) On Layer Normalization in the Transformer Architecture
+   6. Going deeper with Image Transformer (ICCV 2021, 2021/03/31) [[LINK]](https://arxiv.org/abs/2103.17239)
 4. Positional Encoding of Transformer
    1. *__On the relationship between self-attention and convolution layers (ICLR 2020)__* [[LINK]](https://arxiv.org/abs/1911.03584)
       - Supplementary [[LINK]](http://jbcordonnier.com/posts/attention-cnn/)
@@ -202,6 +203,3 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 - Module이 추가된다면, 기존 transformer가 갖고 있는 nature와 redundant한 동작을 하지 않는 역할을 할 수 있는 위치에 추가되어야 한다. 
 # Implemetation
 구상한 Idea를 구현해보고 결과를 확인한다.
-
-
-

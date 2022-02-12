@@ -81,10 +81,10 @@ __그 중에서도 중요한 논문은 + bold체__
 
 각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?
 1. Attention + CNN 
-2. About Transformer (80%)
-3. Nature of Transformer (60%)
-4. Positional Encoding of Transformer (70%)
-5. Injecting bias to Transformer (0%)
+2. About Transformer (100%)
+3. Nature of Transformer (80%)
+4. Positional Encoding of Transformer (90%)
+5. Injecting bias to Transformer (30%)
 6. Using Transformer in Re-ID (0%) 
 
 # KEY IDEA 

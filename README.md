@@ -57,6 +57,7 @@ __그 중에서도 중요한 논문은 + bold체__
    8. *Self-Attention with Relative Position Representations* (NAACL 2018, 2018/03/06) [[LINK]](https://arxiv.org/abs/1803.02155)
    9. *What do position embeddings Learn? An Empirical Study of Pre-Trained Language Model Positional Encoding (EMNLP 2020, 2020/09/28)* [[LINK]](https://arxiv.org/abs/2010.04903)
    10. Improve Transformer Models with Better Relative Position Embeddings(EMNLP 2020 ,20/09/28) [[LINK]](https://arxiv.org/abs/2009.13658)
+   11. Position information in transformers : An overview (arxiv, 2021/02/22) [[LINK]](https://arxiv.org/abs/2102.11090)
 5. Injecting bias to Transformer via structure change
    1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [[LINK]](http://openaccess.thecvf.com/content/ICCV2021/html/Chen_Visformer_The_Vision-Friendly_Transformer_ICCV_2021_paper.html)
    2. ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)[[LINK]](https://arxiv.org/abs/2103.10697)
@@ -76,7 +77,7 @@ __그 중에서도 중요한 논문은 + bold체__
   - Master Positional Encoding : Part 1 [[LINK]](https://towardsdatascience.com/master-positional-encoding-part-i-63c05d90a0c3)
   - Master Positional Encoding : Part 2 [[LINK]](https://towardsdatascience.com/master-positional-encoding-part-ii-1cfc4d3e7375) 
   - AI coffee break playlist [[LINK]](https://www.youtube.com/watch?v=1biZfFLPRSY&list=PLpZBeKTZRGPOQtbCIES_0hAvwukcs-y-x)
-  
+  - Visual Guide to Transformer Neural Networks - (Episode 1) Position Embeddings [[LINK]](https://www.youtube.com/watch?v=dichIcUZfOw&t=606s)
 # Process
 
 각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?

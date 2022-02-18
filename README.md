@@ -14,14 +14,8 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 02/07 ~ 02/14 Injecting bias to Transformer
-   1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [[LINK]](http://openaccess.thecvf.com/content/ICCV2021/html/Chen_Visformer_The_Vision-Friendly_Transformer_ICCV_2021_paper.html)
-   2. __ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)__[[LINK]](https://arxiv.org/abs/2103.10697)
-   3. CMT : Convolutional Neural Networks Meet Vision Transformers (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
-   4. LocalViT : Bringing Locality to Vision Transformers (arxiv,2021/04/12)[[LINK]](https://arxiv.org/abs/2104.05707)
-   5. __Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)__[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
-   6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
-   7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
+- 02/18 ~ 02/28 How Do Vision Transformer Works?(ICLR,2022)
+
 # Groups
 
 ## 개념별로 논문들을 분류한다. 
@@ -40,10 +34,24 @@ __그 중에서도 중요한 논문은 + bold체__
 3. Nature of Transformer
    1. When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations
    2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](#32-do-vision-transformers-see-like-convolutional-neural-networks)
-   3. On the Expressive Power of Self-Attention Matrices
-   4. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
-   5. (LayerNorm) On Layer Normalization in the Transformer Architecture
-   6. Going deeper with Image Transformer (ICCV 2021, 2021/03/31) [[LINK]](https://arxiv.org/abs/2103.17239)
+   3. How Do vision Transformers Work?(ICLR,2022)[[LINK]](https://arxiv.org/abs/2202.06709)
+   4. On the Expressive Power of Self-Attention Matrices
+   5. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
+   6. (LayerNorm) On Layer Normalization in the Transformer Architecture
+   7. Going deeper with Image Transformer (ICCV 2021, 2021/03/31) [[LINK]](https://arxiv.org/abs/2103.17239)
+   8. Rethinking Spatial Dimensions of Vision Transformers (ICCV 2021 ) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Heo_Rethinking_Spatial_Dimensions_of_Vision_Transformers_ICCV_2021_paper.html)
+   9. UnderStanding Robustness of Transformers for Image Classification(ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Bhojanapalli_Understanding_Robustness_of_Transformers_for_Image_Classification_ICCV_2021_paper.html)
+   10. Towards robust Vision Transformer(arxiv, 2021/05/26) [[LINK]](https://arxiv.org/abs/2105.07926)
+   11. Intriguing properties of vision transformers)(NIPS 2021, 2021/11/25) [[LINK]](https://arxiv.org/abs/2105.10497)
+   12. Do wide and deep networks learn the same things? Uncovering how neural network representations vary with width and depth(ICLR 2021) [[LINK]](https://arxiv.org/abs/2010.15327)
+   13. Blurs behave like ensembles : Spatial smoothings to imporve accuracy, uncertainty, and robustness (arxiv, 2021/11/23) [[LINK]](https://openreview.net/forum?id=34mWBCWMxh9)
+   14. Vision Transformer are Robust Learners (AAAI 2022, 2021/12/4) [[LINK]](https://arxiv.org/abs/2105.07581)
+   15. On the adversarial robustness of visual transformers (arxiv, 2021)[[LINK]](https://arxiv.org/abs/2103.15670)
+   16. Are convolutional neural networks or transformers more like human vision?(CogSci, 2021)[[LINK]](https://arxiv.org/abs/2105.07197)
+   17. Early convolutions help transformers see better(NIPS, 2021)[[LINK]](https://arxiv.org/abs/2106.14881#:~:text=Vision%20transformer%20(ViT)%20models%20exhibit%20substandard%20optimizability.&text=Using%20a%20convolutional%20stem%20in,while%20maintaining%20flops%20and%20runtime.)
+   18. Pyhessian : Neural networks through the lens of the hessian (IEEE international conference on big data,2020) [[LINK]](https://ieeexplore.ieee.org/abstract/document/9378171)
+   19. Incorporating Convolution Designs into Visual Transformers (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Yuan_Incorporating_Convolution_Designs_Into_Visual_Transformers_ICCV_2021_paper.html)
+   20. Making Convolutional Networks Shift-Invariant Again(PMLR 2019)[[LINK]](http://proceedings.mlr.press/v97/zhang19a.html)
 4. Positional Encoding of Transformer
    1. *__On the relationship between self-attention and convolution layers (ICLR 2020)__* [[LINK]](https://arxiv.org/abs/1911.03584)
       - Supplementary [[LINK]](http://jbcordonnier.com/posts/attention-cnn/)
@@ -189,7 +197,8 @@ __그 중에서도 중요한 논문은 + bold체__
   -  아쉽게도, 현재 성능이 좋은 ReID module 들은 아직 CNN에 의존하고 있다. ReID task가 많은 inductive bias를 요구한다는 반증이기도 하다. 연구할 여지가 많다는 점에서 좋은점일지도 모른다.
   
 # TODO
- - 4.3 다시 읽고 세세히 근거 찾기
+ - Positional embedding 자료 준비
+ - TransREID 
 # Sketch
 Idea ,Facts를 기반으로 Idea를 구상한다.
 

@@ -51,7 +51,7 @@ __그 중에서도 중요한 논문은 + bold체__
    17. Early convolutions help transformers see better(NIPS, 2021)[[LINK]](https://arxiv.org/abs/2106.14881#:~:text=Vision%20transformer%20(ViT)%20models%20exhibit%20substandard%20optimizability.&text=Using%20a%20convolutional%20stem%20in,while%20maintaining%20flops%20and%20runtime.)
    18. Pyhessian : Neural networks through the lens of the hessian (IEEE international conference on big data,2020) [[LINK]](https://ieeexplore.ieee.org/abstract/document/9378171)
    19. Incorporating Convolution Designs into Visual Transformers (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Yuan_Incorporating_Convolution_Designs_Into_Visual_Transformers_ICCV_2021_paper.html)
-   20. Making Convolutional Networks Shift-Invariant Again(PMLR 2019)[[LINK]](http://proceedings.mlr.press/v97/zhang19a.html)
+   20. Making Convolutional Networks Shift-Invariant Again(PMLR 2019)[[LINK]](httsp://proceedings.mlr.press/v97/zhang19a.html)
 4. Positional Encoding of Transformer
    1. *__On the relationship between self-attention and convolution layers (ICLR 2020)__* [[LINK]](https://arxiv.org/abs/1911.03584)
       - Supplementary [[LINK]](http://jbcordonnier.com/posts/attention-cnn/)
@@ -75,7 +75,7 @@ __그 중에서도 중요한 논문은 + bold체__
    6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
    7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
 6. Using Transformer in Re-ID 
-
+   1. 
 # Supplementary 
 - Transformer
   - Illustrated Transformer [[LINK]](https://jalammar.github.io/illustrated-transformer/)
@@ -86,14 +86,17 @@ __그 중에서도 중요한 논문은 + bold체__
   - Master Positional Encoding : Part 2 [[LINK]](https://towardsdatascience.com/master-positional-encoding-part-ii-1cfc4d3e7375) 
   - AI coffee break playlist [[LINK]](https://www.youtube.com/watch?v=1biZfFLPRSY&list=PLpZBeKTZRGPOQtbCIES_0hAvwukcs-y-x)
   - Visual Guide to Transformer Neural Networks - (Episode 1) Position Embeddings [[LINK]](https://www.youtube.com/watch?v=dichIcUZfOw&t=606s)
+- ReID baseline Code [[LINK]](https://github.com/layumi/Person_reID_baseline_pytorch)
+- Weight & Biase [[LINK]](https://89douner.tistory.com/313)
+  - Loss plot per epoch & iteration [[LINK]](https://github.com/wandb/client/issues/1591)
 # Process
 
 각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?
 1. Attention + CNN 
 2. About Transformer (100%)
 3. Nature of Transformer (80%)
-4. Positional Encoding of Transformer (90%)
-5. Injecting bias to Transformer (30%)
+4. Positional Encoding of Transformer (100%)
+5. Injecting bias to Transformer (50%)
 6. Using Transformer in Re-ID (0%) 
 
 # KEY IDEA 

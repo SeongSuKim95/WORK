@@ -22,28 +22,30 @@
 
 # TODO
  - Positional embedding 개념 정리
+   - Swin Transformer positional embedding code 확인 
  - Transmatcher, TransREID Code 분석 
  - ReID Baseline code 분석
  - Transmatcher 참고문헌 
- - How Do vision Transformer work? 참고문헌
- 
+ - How Do vision Transformer work? 참고문헌 --> MC dropout, Bayesian NN 파악해야함
+ - Transformer Attention MAP 
+
 ## 개념별로 논문들을 분류한다. 
-*읽은 것은 이탤릭체*  
-__그 중에서도 중요한 논문은 + bold체__
+__읽은 것은 bold체__ 
+__그 중에서도 중요한 논문은 + *이탤릭체*__
 
 1. Attention + CNN
     1. Attention augmented convolutional networks
     2. How much position information do convolutional neural networks encode?
     3. Non-local neural networks
 2. Transformer and Variants
-    1. *(Transformer) Attention is all you need*
-    2. *(BERT) Bert: Pre-training of deep bidirectional transformers for language understanding*
+    1. __(Transformer) Attention is all you need__
+    2. __(BERT) Bert: Pre-training of deep bidirectional transformers for language understanding__
     3. *__(ViT) An image is worth 16x16 words: Transformers for image recognition at scale__*
     4. (DeiT) Training data-efficient image transformers & distillation through attention
 3. Nature of Transformer
    1. When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations
    2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](#32-do-vision-transformers-see-like-convolutional-neural-networks)
-   3. How Do vision Transformers Work?(ICLR,2022)[[LINK]](https://arxiv.org/abs/2202.06709)
+   3. *__How Do vision Transformers Work?(ICLR,2022)__*[[LINK]](https://arxiv.org/abs/2202.06709) [[CODE]](https://github.com/xxxnell/how-do-vits-work)
    4. On the Expressive Power of Self-Attention Matrices
    5. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
    6. (LayerNorm) On Layer Normalization in the Transformer Architecture
@@ -66,13 +68,13 @@ __그 중에서도 중요한 논문은 + bold체__
       - Supplementary [[LINK]](http://jbcordonnier.com/posts/attention-cnn/)
    2. *Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)* [[LINK]](https://arxiv.org/abs/2111.01353)
    3. *__On position embeddings in BERT(ICLR 2021, 20/09/29)__* [[LINK]](https://openreview.net/forum?id=onxoVA9FxMw)
-   4. __*Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)*__ [[LINK]](https://arxiv.org/abs/2006.15595)
-   5. *Do we Really Need Explicit Position Encodings for Vision Transformers?* (21/02/22) 
+   4. __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[LINK]](https://arxiv.org/abs/2006.15595)
+   5. __Do we Really Need Explicit Position Encodings for Vision Transformers?__(21/02/22) 
       - Conditional Positional Encodings for Vision Transformers (21/03/18 revised version) [[LINK]](https://arxiv.org/abs/2102.10882)
-   6. *__Rethinking and Improving Relative Position Encoding for Vision Transformer__*(ICCV 2021, 21/07/29) [[LINK]](https://arxiv.org/abs/2107.14222)
-   7. *Stand-Alone self-Attention in Vision models* (NIPS 2019, 2019/06/13) [[LINK]](https://arxiv.org/abs/1906.05909)
-   8. *Self-Attention with Relative Position Representations* (NAACL 2018, 2018/03/06) [[LINK]](https://arxiv.org/abs/1803.02155)
-   9. *What do position embeddings Learn? An Empirical Study of Pre-Trained Language Model Positional Encoding (EMNLP 2020, 2020/09/28)* [[LINK]](https://arxiv.org/abs/2010.04903)
+   6. __Rethinking and Improving Relative Position Encoding for Vision Transformer__(ICCV 2021, 21/07/29) [[LINK]](https://arxiv.org/abs/2107.14222)
+   7. __Stand-Alone self-Attention in Vision models__(NIPS 2019, 2019/06/13) [[LINK]](https://arxiv.org/abs/1906.05909)
+   8. __Self-Attention with Relative Position Representations__(NAACL 2018, 2018/03/06) [[LINK]](https://arxiv.org/abs/1803.02155)
+   9. __What do position embeddings Learn? An Empirical Study of Pre-Trained Language Model Positional Encoding (EMNLP 2020, 2020/09/28)__[[LINK]](https://arxiv.org/abs/2010.04903)
    10. Improve Transformer Models with Better Relative Position Embeddings(EMNLP 2020 ,20/09/28) [[LINK]](https://arxiv.org/abs/2009.13658)
    11. Position information in transformers : An overview (arxiv, 2021/02/22) [[LINK]](https://arxiv.org/abs/2102.11090)
 5. Injecting bias to Transformer via structure change
@@ -80,15 +82,22 @@ __그 중에서도 중요한 논문은 + bold체__
    2. ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)[[LINK]](https://arxiv.org/abs/2103.10697)
    3. CMT : Convolutional Neural Networks Meet Vision Transformers (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
    4. LocalViT : Bringing Locality to Vision Transformers (arxiv,2021/04/12)[[LINK]](https://arxiv.org/abs/2104.05707)
-   5. Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
+   5. *__Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)__*[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html) [[CODE]](https://github.com/microsoft/Swin-Transformer/blob/5d2aede42b4b12cb0e7a2448b58820aeda604426/models/swin_transformer.py#L89)
    6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
    7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
 6. Using Transformer in Re-ID 
-   1. TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021) [[LINK]](https://papers.nips.cc/paper/2021/hash/0f49c89d1e7298bb9930789c8ed59d48-Abstract.html)
-   2. Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)[[LINK]](https://arxiv.org/abs/2106.03720) 
-   3. TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378)
-   4. Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23) [[LINK]](https://arxiv.org/abs/2111.12084)
+   1. *__TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021)__* [[LINK]](https://papers.nips.cc/paper/2021/hash/0f49c89d1e7298bb9930789c8ed59d48-Abstract.html) [[CODE]](https://github.com/ShengcaiLiao/QAConv/tree/master/projects/transmatcher)
+   2. Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)[[LINK]](https://arxiv.org/abs/2106.03720)
+    - 현재 이 논문은 방법만을 제시하고 있으나, evaluation code마저 잘못짜여져 있어 성능이 충분히 의심가는 상황 (설득력 X)
+   3. TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378) [[CODE]](https://github.com/damo-cv/TransReID)
+   4. Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23) [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
 7. ReID
+   1. Beyond Part Models: Person Retrieval with Refined Part Pooling (and A Strong Convolutional Baseline) (ECCV 2018) [[LINK]](https://openaccess.thecvf.com/content_ECCV_2018/html/Yifan_Sun_Beyond_Part_Models_ECCV_2018_paper.html)
+    [[CODE]](https://github.com/syfafterzy/PCB_RPP_for_reID)
+8. Visualization
+   1. Quantifying Attention Flow in Transformers(arxiv,2020/05/31)[[LINK]](https://arxiv.org/abs/2005.00928)
+   2. Transformer Interpretability Beyond Attention Visualization(CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/papers/Chefer_Transformer_Interpretability_Beyond_Attention_Visualization_CVPR_2021_paper.pdf)
+   3. TS-CAM: Token Semantic Coupled Attention Map for Weakly Supervised Object Localization(ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Gao_TS-CAM_Token_Semantic_Coupled_Attention_Map_for_Weakly_Supervised_Object_ICCV_2021_paper.html)
 
 # Supplementary 
 - Transformer
@@ -101,6 +110,10 @@ __그 중에서도 중요한 논문은 + bold체__
   - AI coffee break playlist [[LINK]](https://www.youtube.com/watch?v=1biZfFLPRSY&list=PLpZBeKTZRGPOQtbCIES_0hAvwukcs-y-x)
   - Visual Guide to Transformer Neural Networks - (Episode 1) Position Embeddings [[LINK]](https://www.youtube.com/watch?v=dichIcUZfOw&t=606s)
 - ReID baseline Code [[LINK]](https://github.com/layumi/Person_reID_baseline_pytorch)
+- How do Vision Transformers work?[[LINK]](https://www.youtube.com/watch?v=dOwRXpSSc8E)
+- Visualizing Attention Map In transfomer
+  - Exploring Explanability for Vision Transformers[[LINK]](https://jacobgil.github.io/deeplearning/vision-transformer-explainability) [[CODE]](https://github.com/jacobgil/vit-explain)
+  - ipynb implementation[[CODE]](https://github.com/jeonsworld/ViT-pytorch/blob/main/visualize_attention_map.ipynb)
 - Weight & Biase [[LINK]](https://89douner.tistory.com/313)
   - Loss plot per epoch & iteration [[LINK]](https://github.com/wandb/client/issues/1591)
 # Process
@@ -121,8 +134,8 @@ __그 중에서도 중요한 논문은 + bold체__
 ## 1. Attention + CNN 
 ## 2. About Transformer 
 ## 3. Nature of Transformer  
+  - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
 ## 4. Positional Encoding of Transformer 
-  - ## 4.2 Do vision Transformers see like convolutional neural networks?
   - ## 4.3 On position Embeddings in BERT
     - NLP 영역에서 BERT가 여러가지 positional embedding 방법에 따라 어떻게 학습되는지를 visualize한 논문으로, 매우 유용한 정보가 많다.__ 3.2 논문 급으로 자주 열어볼 필요가 있다. 심지어, positional embedding의 property를 3가지로 구분하여 각각에 대한 실험 결과를 나열해놓았다. 하나 주의할 점은, language에 기반하여 해석이 이루어지고 있으므로 이것이 image domain에서도 해당되는지를 숙지하며 읽어야 한다.
     - Classification 부분을 분석하는 것이 핵심이다. CLS token과 positional embedding과의 관계가 면밀히 분석되어 있다. )__CLS token은 special token인데 여기에 positional embedding이 함께 적용하는 것이 nonsense 이기 때문이다.__(추후 정리 예정)
@@ -153,6 +166,7 @@ __그 중에서도 중요한 논문은 + bold체__
   - 5.5 Swin Transformer는 convolution 의 filter 개념을 window 라는 개념으로 치환하여 적용한 Transformer이다. 방법이 아무리 복잡하더라도, 개념적으로 쉽고 납득이 잘가면서 좋은 결과를 얻을 수 있다는 것이 매우 매력적이다. Window라는 개념이 ReID에 쓰인다면 어떻게 쓰여야 할까..? 사람의 특성을 생각하여 Vertical한 방향으로 Window를 확장해 나간다면..?
 ## 6. Using Transformer in Re-ID 
   - 4,5를 완벽하게 끝내면, 여기는 오히려 얼마 안걸릴 것 같다. 읽을 논문도 그리 많지 않아보인다.
+  - 라고 말한 나.. 말도안되는 소리였음을 깨달았음(02/23)
 
 # IMPORTANT FACTS
   -  Transformer를 이용한 Classification를 다루는 모든 논문의 benchmarking은 2.4(DeiT)와의 비교를 통해 이루어진다. ReID는 기본적으로 classification 이므로 참고해야할듯 하다.

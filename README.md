@@ -15,10 +15,10 @@
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
 - 02/18 ~ 02/28 
-  - How Do Vision Transformer Works?(ICLR 2022)
-  -  Blurs behave like ensembles : Spatial smoothings to imporve accuracy, uncertainty, and robustness (ICLR 2022 submit, 2021/11/23)
-  - TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021) 0f49c89d1e7298bb9930789c8ed59d48-Abstract.html)
-  - Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)
+  - __How Do Vision Transformer Works?(ICLR 2022)__
+  - Blurs behave like ensembles : Spatial smoothings to imporve accuracy, uncertainty, and robustness (ICLR 2022 submit, 2021/11/23)
+  - __TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021)__
+  - __Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)__
 
 # TODO
  - Positional embedding 개념 정리
@@ -62,15 +62,15 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
    17. Early convolutions help transformers see better(NIPS, 2021)[[LINK]](https://arxiv.org/abs/2106.14881#:~:text=Vision%20transformer%20(ViT)%20models%20exhibit%20substandard%20optimizability.&text=Using%20a%20convolutional%20stem%20in,while%20maintaining%20flops%20and%20runtime.)
    18. Pyhessian : Neural networks through the lens of the hessian (IEEE international conference on big data,2020) [[LINK]](https://ieeexplore.ieee.org/abstract/document/9378171)
    19. Incorporating Convolution Designs into Visual Transformers (ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Yuan_Incorporating_Convolution_Designs_Into_Visual_Transformers_ICCV_2021_paper.html)
-   20. Making Convolutional Networks Shift-Invariant Again(PMLR 2019)[[LINK]](httsp://proceedings.mlr.press/v97/zhang19a.html)
+   20. Making Convolutional Networks Shift-Invariant Again(PMLR 2019)[[LINK]](http://proceedings.mlr.press/v97/zhang19a.html)
 4. Positional Encoding of Transformer
    1. *__On the relationship between self-attention and convolution layers (ICLR 2020)__* [[LINK]](https://arxiv.org/abs/1911.03584)
       - Supplementary [[LINK]](http://jbcordonnier.com/posts/attention-cnn/)
-   2. *Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)* [[LINK]](https://arxiv.org/abs/2111.01353)
+   2. __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__ [[LINK]](https://arxiv.org/abs/2111.01353)
    3. *__On position embeddings in BERT(ICLR 2021, 20/09/29)__* [[LINK]](https://openreview.net/forum?id=onxoVA9FxMw)
    4. __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[LINK]](https://arxiv.org/abs/2006.15595)
    5. __Do we Really Need Explicit Position Encodings for Vision Transformers?__(21/02/22) 
-      - Conditional Positional Encodings for Vision Transformers (21/03/18 revised version) [[LINK]](https://arxiv.org/abs/2102.10882)
+      - __Conditional Positional Encodings for Vision Transformers (21/03/18 revised version)__ [[LINK]](https://arxiv.org/abs/2102.10882)
    6. __Rethinking and Improving Relative Position Encoding for Vision Transformer__(ICCV 2021, 21/07/29) [[LINK]](https://arxiv.org/abs/2107.14222)
    7. __Stand-Alone self-Attention in Vision models__(NIPS 2019, 2019/06/13) [[LINK]](https://arxiv.org/abs/1906.05909)
    8. __Self-Attention with Relative Position Representations__(NAACL 2018, 2018/03/06) [[LINK]](https://arxiv.org/abs/1803.02155)
@@ -114,6 +114,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 - Visualizing Attention Map In transfomer
   - Exploring Explanability for Vision Transformers[[LINK]](https://jacobgil.github.io/deeplearning/vision-transformer-explainability) [[CODE]](https://github.com/jacobgil/vit-explain)
   - ipynb implementation[[CODE]](https://github.com/jeonsworld/ViT-pytorch/blob/main/visualize_attention_map.ipynb)
+  - Transformer Interpretability Beyond Attention Visualization [[CODE]](https://github.com/hila-chefer/Transformer-Explainability)
 - Weight & Biase [[LINK]](https://89douner.tistory.com/313)
   - Loss plot per epoch & iteration [[LINK]](https://github.com/wandb/client/issues/1591)
 # Process
@@ -186,4 +187,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 - 
 - Module이 추가된다면, 기존 transformer가 갖고 있는 nature와 redundant한 동작을 하지 않는 역할을 할 수 있는 위치에 추가되어야 한다. 
 # Implemetation
-구상한 Idea를 구현해보고 결과를 확인한다.
+  1. 일단 Visualization 방법 부터 정확히 짚고 넘어간다.
+  2. Weight & Bias 의 분석 tool 사용법을 완전히 익힌다.
+
+ 구상한 Idea를 구현해보고 결과를 확인한다.

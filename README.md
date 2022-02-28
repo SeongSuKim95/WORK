@@ -14,29 +14,24 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 02/18 ~ 02/28 
-  - __How Do Vision Transformer Works?(ICLR 2022)__
-  - Blurs behave like ensembles : Spatial smoothings to imporve accuracy, uncertainty, and robustness (ICLR 2022 submit, 2021/11/23)
-  - __TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021)__
-  - __Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)__
-
+- 02/28 
+  - Transmatcher, TransREID Code 분석
+  - Transmatcher, TransREID 참고문헌 중 읽을 것들 정리 
+- 02/28 - 03/13 (거의 다 왔다..) 
 # TODO
- - Positional embedding 개념 정리
-   - Swin Transformer positional embedding code 확인 
+- Swin Transformer positional embedding code 확인 
  - Transmatcher, TransREID Code 분석 
+ - Transmatcher, TransREID 참고문헌 
  - ReID Baseline code 분석
- - Transmatcher 참고문헌 
- - How Do vision Transformer work? 참고문헌 --> MC dropout, Bayesian NN 파악해야함
- - Transformer Attention MAP 
+ - Transformer Attention MAP : Weight & Bias 와 연동 
 
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
 
 1. Attention + CNN
-    1. Attention augmented convolutional networks
-    2. How much position information do convolutional neural networks encode?
-    3. Non-local neural networks
+    1. How much position information do convolutional neural networks encode?
+    2. Non-local neural networks
 2. Transformer and Variants
     1. __(Transformer) Attention is all you need__
     2. __(BERT) Bert: Pre-training of deep bidirectional transformers for language understanding__
@@ -80,14 +75,14 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 5. Injecting bias to Transformer via structure change
    1. Visformer : The Vision-friendly Transformer (ICCV 2021, 2021/12/18) [[LINK]](http://openaccess.thecvf.com/content/ICCV2021/html/Chen_Visformer_The_Vision-Friendly_Transformer_ICCV_2021_paper.html)
    2. ConViT: Improving Vision Transformer with Soft Convolutio nal Inductive Biases (PMLR 2021, 2021/03/19)[[LINK]](https://arxiv.org/abs/2103.10697)
-   3. CMT : Convolutional Neural Networks Meet Vision Transformers (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
+   3. __CMT : Convolutional Neural Networks Meet Vision Transformers__ (arxiv,2021/07/13)[[LINK]](https://arxiv.org/abs/2107.06263)
    4. LocalViT : Bringing Locality to Vision Transformers (arxiv,2021/04/12)[[LINK]](https://arxiv.org/abs/2104.05707)
    5. *__Swin Transformer : Hierarchical Vision Transformer using Shifted Window (ICCV 2021)__*[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html) [[CODE]](https://github.com/microsoft/Swin-Transformer/blob/5d2aede42b4b12cb0e7a2448b58820aeda604426/models/swin_transformer.py#L89)
    6. CvT : Introducing Convolutions to Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Wu_CvT_Introducing_Convolutions_to_Vision_Transformers_ICCV_2021_paper.html)
    7. ViTAE: Vision Transformer Advanced by Exploring Intrinsic Inductive Bias(NIPS 2021) [[LINK]](https://proceedings.neurips.cc/paper/2021/hash/efb76cff97aaf057654ef2f38cd77d73-Abstract.html)
 6. Using Transformer in Re-ID 
    1. *__TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021)__* [[LINK]](https://papers.nips.cc/paper/2021/hash/0f49c89d1e7298bb9930789c8ed59d48-Abstract.html) [[CODE]](https://github.com/ShengcaiLiao/QAConv/tree/master/projects/transmatcher)
-   2. Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)[[LINK]](https://arxiv.org/abs/2106.03720)
+   2. __Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)__[[LINK]](https://arxiv.org/abs/2106.03720)
     - 현재 이 논문은 방법만을 제시하고 있으나, evaluation code마저 잘못짜여져 있어 성능이 충분히 의심가는 상황 (설득력 X)
    3. TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378) [[CODE]](https://github.com/damo-cv/TransReID)
    4. Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23) [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
@@ -184,8 +179,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 - Relative position을 사용해야한다. 이 과정에서 positional matrix를 어떻게 modeling 하느냐가 관건이 되겠다.
   - Swin Transformer의 Relative postional embedding의 구현 code를 이해하면 수월하다.
 - 그러나, Transformer 구조에서 postional embedding의 설계만으로 이를 따라갈 수 있을것이라고는 생각하지 않는다. Additional한 conv module이 필요할 것이다.
-- 
 - Module이 추가된다면, 기존 transformer가 갖고 있는 nature와 redundant한 동작을 하지 않는 역할을 할 수 있는 위치에 추가되어야 한다. 
+  
 # Implemetation
   1. 일단 Visualization 방법 부터 정확히 짚고 넘어간다.
   2. Weight & Bias 의 분석 tool 사용법을 완전히 익힌다.

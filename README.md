@@ -15,16 +15,16 @@
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
 - 02/28 
+  - (DeiT) Training data-efficient image transformers & distillation through attention
   - Transmatcher, TransREID Code 분석
   - Transmatcher, TransREID 참고문헌 중 읽을 것들 정리 
 - 02/28 - 03/13 (거의 다 왔다..) 
 # TODO
-- Swin Transformer positional embedding code 확인 
- - Transmatcher, TransREID Code 분석 
- - Transmatcher, TransREID 참고문헌 
- - ReID Baseline code 분석
- - Transformer Attention MAP : Weight & Bias 와 연동 
-
+  - Swin Transformer positional embedding code 확인 
+  - Transmatcher, TransREID Code 분석 
+  - Transmatcher, TransREID 참고문헌 
+  - ReID Baseline code 분석
+  - Transformer Attention MAP : Weight & Bias 와 연동 
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
@@ -84,7 +84,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
    1. *__TransMatcher : Deep Image Matching Through Transfomers for Generalizable Person Re-identification(NIPS 2021)__* [[LINK]](https://papers.nips.cc/paper/2021/hash/0f49c89d1e7298bb9930789c8ed59d48-Abstract.html) [[CODE]](https://github.com/ShengcaiLiao/QAConv/tree/master/projects/transmatcher)
    2. __Person Re-identification with a Locally Aware Transformer(NIPS 2021 submit, 2021/06)__[[LINK]](https://arxiv.org/abs/2106.03720)
     - 현재 이 논문은 방법만을 제시하고 있으나, evaluation code마저 잘못짜여져 있어 성능이 충분히 의심가는 상황 (설득력 X)
-   3. TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378) [[CODE]](https://github.com/damo-cv/TransReID)
+   3. __TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378)__ [[CODE]](https://github.com/damo-cv/TransReID)
    4. Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23) [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
 7. ReID
    1. Beyond Part Models: Person Retrieval with Refined Part Pooling (and A Strong Convolutional Baseline) (ECCV 2018) [[LINK]](https://openaccess.thecvf.com/content_ECCV_2018/html/Yifan_Sun_Beyond_Part_Models_ECCV_2018_paper.html)

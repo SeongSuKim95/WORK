@@ -18,13 +18,13 @@
   - (DeiT) Training data-efficient image transformers & distillation through attention
   - Transmatcher, TransREID Code 분석
   - Transmatcher, TransREID 참고문헌 중 읽을 것들 정리 
-- 02/28 - 03/13 (거의 다 왔다..) 
+- 02/28 - 03/13
 # TODO
   - Swin Transformer positional embedding code 확인 
   - Transmatcher, TransREID Code 분석 
   - Transmatcher, TransREID 참고문헌 
-  - ReID Baseline code 분석
   - Transformer Attention MAP : Weight & Bias 와 연동 
+  - Transformer Decoder mechanism 파악
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
@@ -87,8 +87,11 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
    3. __TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378)__ [[CODE]](https://github.com/damo-cv/TransReID)
    4. Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23) [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
 7. ReID
-   1. Beyond Part Models: Person Retrieval with Refined Part Pooling (and A Strong Convolutional Baseline) (ECCV 2018) [[LINK]](https://openaccess.thecvf.com/content_ECCV_2018/html/Yifan_Sun_Beyond_Part_Models_ECCV_2018_paper.html)
+   1. Hao Luo paper list [[LINK]](ttps://scholar.google.com/citations?user=7QvWnzMAAAAJ&hl=zh-CN)
+   2. (PCB)Beyond Part Models: Person Retrieval with Refined Part Pooling (and A Strong Convolutional Baseline) (ECCV 2018) [[LINK]](https://openaccess.thecvf.com/content_ECCV_2018/html/Yifan_Sun_Beyond_Part_Models_ECCV_2018_paper.html)
     [[CODE]](https://github.com/syfafterzy/PCB_RPP_for_reID)
+   3. A strong Baseline and Batch Normalization Neck for Deep Person Re-Identification [[LINK]](https://ieeexplore.ieee.org/abstract/document/8930088)
+   4. Bag of Tricks and A strong baseline for deep person re-identification(CVPR 2019) [[LINK]](https://arxiv.org/abs/1903.07071)
 8. Visualization
    1. Quantifying Attention Flow in Transformers(arxiv,2020/05/31)[[LINK]](https://arxiv.org/abs/2005.00928)
    2. Transformer Interpretability Beyond Attention Visualization(CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/papers/Chefer_Transformer_Interpretability_Beyond_Attention_Visualization_CVPR_2021_paper.pdf)

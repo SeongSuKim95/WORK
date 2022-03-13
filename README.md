@@ -14,20 +14,13 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 02/28 - 03/13
-  - TransREID Code 분석 v
-  - Attention map visualize code 작성 v
-  - Transmatcher coder 분석 v
-  - Transmatcher, TransREID 참고문헌 중 읽을 것들 정리 
-
-# TODO
-  - Swin Transformer positional embedding code 확인 
-  - Transmatcher, TransREID Code 분석
-  - Transmatcher, TransREID 참고문헌 
-  - Transformer Attention MAP : Weight & Bias 와 연동 
+- 03/14 - 03/21
+  - Transmatcher Code 분석
   - Transformer Decoder mechanism 파악
-  - Vision Transformer에서 query, key image의 의미 생각하기
-
+  - Vision Transformer에서 query, key image의 의미 생각하기, Query Key image visualize
+  - Swin Transformer positional embedding code 확인 
+  - 4.3 Code에서 visualize code 가져오기
+  
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
@@ -117,6 +110,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
   - Transformer Interpretability Beyond Attention Visualization [[CODE]](https://github.com/hila-chefer/Transformer-Explainability)
 - Weight & Biase [[LINK]](https://89douner.tistory.com/313)
   - Loss plot per epoch & iteration [[LINK]](https://github.com/wandb/client/issues/1591)
+
 # Process
 
 각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?
@@ -185,8 +179,19 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   1. 일단 Visualization 방법 부터 정확히 짚고 넘어간다.
    - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
    - 0306 : Query image에 대한 Attention roll out 완료 
-   - TODO : Weight & Bias 를 통해 attention map 연동
+   - 0310 : Query image에 대한 Visualize 결과 통합
+     ![show](https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png)
+   - TODO : 
+     - Training / Weight & Bias 를 통해 attention map 연동
+     - HARDEST QUERY 출력
+     - Positional Embedding visualize
 
   2. Weight & Bias 의 분석 tool 사용법을 완전히 익힌다.
 
+  3. Matplotlib 사용법
+   - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)
+   - Subplot 간격 설정 [[LINK]](https://steadiness-193.tistory.com/174)
+   - cv2 Attention map in PLT [[LINK]](http://www.learningaboutelectronics.com/Articles/How-to-display-an-OpenCV-image-in-Python-with-matplotlib.php)
+
+  4. Dealing with Pytorch Model params [[LINK]](https://comlini8-8.tistory.com/50)
  구상한 Idea를 구현해보고 결과를 확인한다.

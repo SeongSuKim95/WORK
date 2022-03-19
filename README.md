@@ -15,12 +15,13 @@
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
 - 03/14 - 03/21
+  - Unsupervised Pre-training for Person Re-identification (CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/html/Fu_Unsupervised_Pre-Training_for_Person_Re-Identification_CVPR_2021_paper.html)
+  - __Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23)__ [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
   - Transmatcher Code 분석
-  - Transformer Decoder mechanism 파악
   - Vision Transformer에서 query, key image의 의미 생각하기, Query Key image visualize
-  - Swin Transformer positional embedding code 확인 
-  - 4.3 Code에서 visualize code 가져오기
-  
+  - Positional embedding visualize 
+- 03/19
+  - ViT를 위한 Element weighted Triplet hard loss 구현
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
@@ -82,11 +83,13 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
     - 현재 이 논문은 방법만을 제시하고 있으나, evaluation code마저 잘못짜여져 있어 성능이 충분히 의심가는 상황 (설득력 X)
    3. __TransReID : Transformer-based Object Re-Identification (ICCV 2021, 2021/03/26)[[LINK]](https://arxiv.org/abs/2102.04378)__ [[CODE]](https://github.com/damo-cv/TransReID)
    4. Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23) [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
+   5. Diverse Part Discovery: Occluded Person Re-Identification With Part-Aware Transformer (CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/html/Li_Diverse_Part_Discovery_Occluded_Person_Re-Identification_With_Part-Aware_Transformer_CVPR_2021_paper.html)
 7. ReID (Hao Luo paper list [[LINK]](ttps://scholar.google.com/citations?user=7QvWnzMAAAAJ&hl=zh-CN))
    1. __(PCB)Beyond Part Models: Person Retrieval with Refined Part Pooling (and A Strong Convolutional Baseline)__ (ECCV 2018) [[LINK]](https://openaccess.thecvf.com/content_ECCV_2018/html/Yifan_Sun_Beyond_Part_Models_ECCV_2018_paper.html)
     [[CODE]](https://github.com/syfafterzy/PCB_RPP_for_reID)
    2. __A strong Baseline and Batch Normalization Neck for Deep Person Re-Identification__ [[LINK]](https://ieeexplore.ieee.org/abstract/document/8930088)
    3. __Bag of Tricks and A strong baseline for deep person re-identification(CVPR 2019)__ [[LINK]](https://arxiv.org/abs/1903.07071)
+   4. Unsupervised Pre-training for Person Re-identification (CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/html/Fu_Unsupervised_Pre-Training_for_Person_Re-Identification_CVPR_2021_paper.html)
 8. Visualization
    1. (Attention Roll out) __Quantifying Attention Flow in Transformers(arxiv,2020/05/31)__[[LINK]](https://arxiv.org/abs/2005.00928)
    2. (Grad Attention Roll out)Transformer Interpretability Beyond Attention Visualization(CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/papers/Chefer_Transformer_Interpretability_Beyond_Attention_Visualization_CVPR_2021_paper.pdf)
@@ -193,5 +196,10 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
    - Subplot 간격 설정 [[LINK]](https://steadiness-193.tistory.com/174)
    - cv2 Attention map in PLT [[LINK]](http://www.learningaboutelectronics.com/Articles/How-to-display-an-OpenCV-image-in-Python-with-matplotlib.php)
 
-  4. Dealing with Pytorch Model params [[LINK]](https://comlini8-8.tistory.com/50)
+  4. Dealing with Pytorch Model params [[LINK]](https://comlini8-8.tistory.com/50) [[LINK]](https://tutorials.pytorch.kr/beginner/saving_loading_models.html)
+
+  5. Torch.Detach [[LINK]](https://redstarhong.tistory.com/64)
+  
+  6. TSNE for Debug [[LINK]](https://learnopencv.com/t-sne-for-feature-visualization/)
  구상한 Idea를 구현해보고 결과를 확인한다.
+

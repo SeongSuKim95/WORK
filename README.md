@@ -14,14 +14,14 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 03/14 - 03/21
-  - Unsupervised Pre-training for Person Re-identification (CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/html/Fu_Unsupervised_Pre-Training_for_Person_Re-Identification_CVPR_2021_paper.html)
-  - __Self-Supervised Pre-training for Transformer-Based Person Re-identification (arxiv, 2021/11/23)__ [[LINK]](https://arxiv.org/abs/2111.12084) [[CODE]](https://github.com/damo-cv/TransReID)
-  - Transmatcher Code 분석
-  - Vision Transformer에서 query, key image의 의미 생각하기, Query Key image visualize
+- 03/22 - 03/29
+  - ViT를 위한 Patch Element weighted Triplet hard loss 구현 (완료)
+  - Metric learning
+    1. __L2-constrained softmax loss for discriminative face verification__ (arxiv 2017)[[LINK]](https://arxiv.org/abs/1703.09507)
+    2. __Rethinking Feature Discrimination and Polymerization for Large-scale Recognition__(arxiv 2017)[[LINK]](https://arxiv.org/abs/1710.00870) 
   - Positional embedding visualize 
-- 03/19
-  - ViT를 위한 Element weighted Triplet hard loss 구현
+
+  
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
@@ -90,7 +90,10 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
    2. __A strong Baseline and Batch Normalization Neck for Deep Person Re-Identification__ [[LINK]](https://ieeexplore.ieee.org/abstract/document/8930088)
    3. __Bag of Tricks and A strong baseline for deep person re-identification(CVPR 2019)__ [[LINK]](https://arxiv.org/abs/1903.07071)
    4. Unsupervised Pre-training for Person Re-identification (CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/html/Fu_Unsupervised_Pre-Training_for_Person_Re-Identification_CVPR_2021_paper.html)
-8. Visualization
+8. Metric learning
+   1. __L2-constrained softmax loss for discriminative face verification__ (arxiv 2017)[[LINK]](https://arxiv.org/abs/1703.09507)
+   2. __Rethinking Feature Discrimination and Polymerization for Large-scale Recognition__(arxiv 2017)[[LINK]](https://arxiv.org/abs/1710.00870)
+9. Visualization
    1. (Attention Roll out) __Quantifying Attention Flow in Transformers(arxiv,2020/05/31)__[[LINK]](https://arxiv.org/abs/2005.00928)
    2. (Grad Attention Roll out)Transformer Interpretability Beyond Attention Visualization(CVPR 2021) [[LINK]](https://openaccess.thecvf.com/content/CVPR2021/papers/Chefer_Transformer_Interpretability_Beyond_Attention_Visualization_CVPR_2021_paper.pdf)
    3. TS-CAM: Token Semantic Coupled Attention Map for Weakly Supervised Object Localization(ICCV 2021)[[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Gao_TS-CAM_Token_Semantic_Coupled_Attention_Map_for_Weakly_Supervised_Object_ICCV_2021_paper.html)
@@ -119,11 +122,11 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?
 1. Attention + CNN 
 2. About Transformer (100%)
-3. Nature of Transformer (60%)
+3. Nature of Transformer (70%)
 4. Positional Encoding of Transformer (100%)
-5. Injecting bias to Transformer (50%)
-6. Using Transformer in Re-ID (90%)
-7. ReID (70$) 
+5. Injecting bias to Transformer (70%)
+6. Using Transformer in Re-ID (80%)
+7. ReID (90$) 
 
 # KEY IDEA 
 
@@ -179,16 +182,20 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 ### *Vision Transformer의 Self attention mechanism을 metric learning에 더 유용하도록 적용할 수 있는가?* 
 
 # Implemetation
-  1. 일단 Visualization 방법 부터 정확히 짚고 넘어간다.
    - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
    - 0306 : Query image에 대한 Attention roll out 완료 
    - 0310 : Query image에 대한 Visualize 결과 통합
      ![show](https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png)
-   - TODO : 
-     - Training / Weight & Bias 를 통해 attention map 연동
-     - HARDEST QUERY 출력
-     - Positional Embedding visualize
-
+   - 0315 :  
+     - Training / Weight & Bias 를 통해 attention map 연동 완료
+     - HARDEST QUERY 출력 완료
+     - Positional Embedding visualize 완료
+   - 0322 :
+     - Patch wise Triplet loss 구현
+       - Cosine distance FIX 완료
+       - Euclidean distance 구현 완료
+     - Self - Attention 과 metric learning의 연결고리..?
+       - 마지막 transformer layer에 anchor, negative, positive 간 self-attention이 고려된 부분이 추가된다면?
   2. Weight & Bias 의 분석 tool 사용법을 완전히 익힌다.
 
   3. Matplotlib 사용법

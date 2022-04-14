@@ -14,18 +14,15 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 03/22 - 03/29
-  - ViT를 위한 Patch Element weighted Triplet hard loss 구현 (완료)
-  - Metric learning
-    1. __L2-constrained softmax loss for discriminative face verification__ (arxiv 2017)[[LINK]](https://arxiv.org/abs/1703.09507)
-    2. __Rethinking Feature Discrimination and Polymerization for Large-scale Recognition__(arxiv 2017)[[LINK]](https://arxiv.org/abs/1710.00870) 
-  - Positional embedding visualize 
+- 04/14 - 04/21
+  1. T. Nguyen, M. Raghu, and S. Kornblith, "Do wide and deep networks learn the same things? uncovering how neural network representations vary with width and depth," arXiv preprint arXiv:2010.15327, 2020.
+  2. Weight & Biase 
+  3. 정리 다시 시작하자...
 
   
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
-
 1. Attention + CNN
     1. How much position information do convolutional neural networks encode?
     2. Non-local neural networks
@@ -126,7 +123,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 4. Positional Encoding of Transformer (100%)
 5. Injecting bias to Transformer (70%)
 6. Using Transformer in Re-ID (80%)
-7. ReID (90$) 
+7. ReID (90%) 
 
 # KEY IDEA 
 

@@ -35,7 +35,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
     4. (DeiT) Training data-efficient image transformers & distillation through attention
 3. Nature of Transformer
    1. When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations
-   2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
+   2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](https://github.com/SeongSuKim95/WORK/blob/master/Paper_review/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
    3. *__How Do vision Transformers Work?(ICLR,2022)__*[[LINK]](https://arxiv.org/abs/2202.06709) [[CODE]](https://github.com/xxxnell/how-do-vits-work)
    4. On the Expressive Power of Self-Attention Matrices
    5. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
@@ -272,11 +272,11 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - Idea
     - ViT의 unique한 구조 중 하나인 positional embedding을 사용하여, Re-ID sample에 대해 사람의 각 신체 부위를 담고 있는 patch간 상대적 위치 관계를 model이 학습할 수 있도록 하자.
     - 같은 ID의 sample은 신체 부위의 상대적 위치 관계가 비슷하다는 사실을 model에게 supervise, 즉 주요 patch들간 relative positional bias 분포가 비슷하도록 유도
-  - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Explanation%20of%20RPE.md)
+  - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Explanation%20of%20RPE.md)
   - 0505 : Position information modeling 설계 구현
     - 각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
     ![Selecting_patch](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
-    1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Insight%20in%20Classifier%20layer.md)
+    1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Insight%20in%20Classifier%20layer.md)
     2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.
     3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
     ![patch_information](https://user-images.githubusercontent.com/62092317/174057266-ff317234-43f2-488d-b040-c652ac34ea3d.PNG)
@@ -291,7 +291,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
       - *Triplet loss의 성질과 position vector의 numerical한 특성을 고려하지 않았기 떄문*이다.
       - Triplet loss는 기본적으로 sample의 feature vector에 대해 적용되며, 이 feature vector를 euclidean space에 projection한 후 distance를 계산한다. 
       - 내가 추출한 position 정보는 Attention score에 기반한 값이기 떄문에, *feature가 아닌 similarity* 이다. Similarity는 Euclidean space에서 다루지 않고 probability density의 형태로 사용한다.
-      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다.[[Link : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
+      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다.[[Link : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
       - Solution : KL divergence loss를 사용하자!
   - 0510 : Jensen-Shannon Divergence loss added
     - Anchor와 positive의 position vector 각각에 softmax를 취한 후 KL divergence를 구하자 loss가 발산하는 문제가 사라졌다.

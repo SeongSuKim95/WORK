@@ -35,13 +35,13 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
     4. (DeiT) Training data-efficient image transformers & distillation through attention
 3. Nature of Transformer
    1. When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations
-   2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](#32-do-vision-transformers-see-like-convolutional-neural-networks)
+   2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
    3. *__How Do vision Transformers Work?(ICLR,2022)__*[[LINK]](https://arxiv.org/abs/2202.06709) [[CODE]](https://github.com/xxxnell/how-do-vits-work)
    4. On the Expressive Power of Self-Attention Matrices
    5. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
    6. (LayerNorm) On Layer Normalization in the Transformer Architecture
    7. Going deeper with Image Transformer (ICCV 2021, 2021/03/31) [[LINK]](https://arxiv.org/abs/2103.17239)
-   8. Rethinking Spatial Dimensions of Vision Transformers (ICCV 2021 ) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Heo_Rethinking_Spatial_Dimensions_of_Vision_Transformers_ICCV_2021_paper.html)
+   8. Rethinking Spatial Dimensions of Vision Transformers (ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Heo_Rethinking_Spatial_Dimensions_of_Vision_Transformers_ICCV_2021_paper.html)
    9. UnderStanding Robustness of Transformers for Image Classification(ICCV 2021) [[LINK]](https://openaccess.thecvf.com/content/ICCV2021/html/Bhojanapalli_Understanding_Robustness_of_Transformers_for_Image_Classification_ICCV_2021_paper.html)
    10. Towards robust Vision Transformer(arxiv, 2021/05/26) [[LINK]](https://arxiv.org/abs/2105.07926)
    11. Intriguing properties of vision transformers)(NIPS 2021, 2021/11/25) [[LINK]](https://arxiv.org/abs/2105.10497)
@@ -176,29 +176,34 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
   
 # Sketch
 Idea ,Facts를 기반으로 Idea를 구상한다.
-### *Patch단위의 정보를 유지하는 transformer의 특성과, 사람의 신체 구조를 학습할 수 있는 relative postional encoding을 통한 inductive bias으로 ReID의 성능을 올릴 수 있는가?*
+
+ 
+### Idea 1: *Vision Transformer의 Self attention mechanism이 metric learning에 더 유용하도록 loss를 설계할 수 있는가?* 
+### Idea 2 :  *Patch단위의 정보를 유지하는 vision transformer의 특성과, 사람의 신체 구조를 학습할 수 있는 relative postional encoding을 통한 inductive bias으로 ReID의 성능을 올릴 수 있는가?*
 - 먼저, 3.2에 근거하여 output patch를 사용하는 것이 나아보인다. 어찌되었건 각 part image에 coressponding한 정보를 담고 있기 때문이다. 골라낼 수만 있다면, element weighted triplet hard loss 처럼 loss에 적용할 수도 있겠다.
   - 6.2 논문이 이 Idea를 기반으로 ReID를 수행하였으나, 방법만 제시하고 해석은 제시되어 있지 않다.
-- Relative position을 사용해야한다. 이 과정에서 positional matrix를 어떻게 modeling 하느냐가 관건이 되겠다.
-  - Swin Transformer의 Relative postional embedding의 구현 code를 이해하면 수월하다.
-- 그러나, Transformer 구조에서 postional embedding의 설계만으로 이를 따라갈 수 있을것이라고는 생각하지 않는다. Additional한 conv module이 필요할 것이다.
-- Module이 추가된다면, 기존 transformer가 갖고 있는 nature와 redundant한 동작을 하지 않는 역할을 할 수 있는 위치에 추가되어야 한다. 
-### *Vision Transformer의 Self attention mechanism을 metric learning에 더 유용하도록 적용할 수 있는가?* 
+- Relative position을 사용해야한다. 이 과정에서 relative positional bias를 어떻게 사용하여 inductive bias를 modeling 하느냐가 관건이 되겠다.
+  - Relative posion의 구현은 여러 형태가 존재하지만 Swin Transformer의 code(bias term)이 내 idea의 목적과 가장 어울리는 구현으로 보인다. 
+- ViT의 기본 속성을 그대로 안고 갈 것이기 때문에, 추가적인 module이 필요하다면 ViT의 pretrained weight들의 optimize 방향에 반하지 않는 역할을 할 수 있는 위치에 plug-in 되어야 한다.
 
 ### 논리 전개 구상
-    1. Vision transformer는 vision task에서 좋은 성능을 보여왔다.
-    2. ReID task에 대해선 아직 CNN 기반의 모델이 dominant하다. 또, 아직 ViT의 nature를 ReID에 어떻게 활용할 수 있는지에 대한 연구는 많지 않다.
-    3. ViT엔 CNN엔 없는 positional embedding이란 장치가 있다. 이는 patch의 위치 정보를 모델이 학습할 수 있도록 돕는다.
-    4. 이 positional embedding은 크게 두 종류로 나뉘는데, APE와 RPE이다.
-    5. RPE는 vision 영역에서 efficacy가 충분히 검증되지 않았다. 또, 이것의 학습이 image에 대해 충분히 이루어지는지도 미지수이다.
-    6. 이는 image와 sentence의 구조적 차이가 충분히 반영되지 않았기 때문이다. 이를 해결하기 위해 RPE에 여러 기법들이 적용된 논문들이 있다. Swin transformer는 RPE를 bias의 형태로 단순화하여 적용하였을 때 성능적으로 우수함을 입증하였다.
-    7. Re-ID dataset은 여타 image dataset과 다르게, 모든 sample이 사람을 대상으로 하기 떄문에 sample간 correlation(즉, 형태적 유사성)이 높다. 즉 sample내 object의 형태가 비슷하기 때문에 patch의 위치가 갖는 의미가 다른 dataset에 비해 크다. 
-    9. 따라서, PE가 갖는 특성을 활용해 ReID dataset을 효율적으로 학습할 수 있도록 explicit한 supervision을 주고자 한다.
-    10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
-    11. 여러 ReID dataset(Market-1501, DukeMTMC-ReID, CHUK03-np, MSMT17-V2)에 대해 제안한 방식을 통한 성능향상이 있음을 확인했다.
+  1. Vision transformer는 vision task에서 좋은 성능을 보여왔다.
+  2. ReID task에 대해선 아직 CNN 기반의 모델이 dominant하다. 또, 아직 ViT의 nature를 ReID에 어떻게 활용할 수 있는지에 대한 연구는 많지 않다.
+  3. ViT엔 CNN엔 없는 positional embedding이란 장치가 있다. 이는 patch의 위치 정보를 모델이 학습할 수 있도록 돕는다.
+  4. 이 positional embedding은 크게 두 종류로 나뉘는데, APE와 RPE이다.
+  5. RPE는 vision 영역에서 efficacy가 충분히 검증되지 않았다. 또, 이것의 학습이 image에 대해 충분히 이루어지는지도 미지수이다.
+  6. 이는 image와 sentence의 구조적 차이가 충분히 반영되지 않았기 때문이다. 이를 해결하기 위해 RPE에 여러 기법들이 적용된 논문들이 있다. Swin transformer는 RPE를 bias의 형태로 단순화하여 적용하였을 때 성능적으로 우수함을 입증하였다.
+  - ImageNet : ![Image_Net](https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG)
+  - ReID dataset : ![ReID_data](https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG)
+  7. Re-ID dataset은 여타 image dataset과 다르게, 모든 sample이 사람을 대상으로 하기 떄문에 sample간 correlation(즉, 형태적 유사성)이 높다. 즉 sample내 object의 형태가 비슷하기 때문에 patch의 위치가 갖는 의미가 다른 dataset에 비해 크다. 
+  9. 따라서, PE가 갖는 특성을 활용해 ReID dataset을 효율적으로 학습할 수 있도록 explicit한 supervision을 주고자 한다.
+  10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
+  11. 여러 ReID dataset(Market-1501, DukeMTMC-ReID, CHUK03-np, MSMT17-V2)에 대해 제안한 방식을 통한 성능향상이 있음을 확인했다.
 # Working process with Time log 
-- ViT based ReID   
+- ## Structure of ViT based ReID   
 ![ViT_ReID](https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG)
+  
+- ## Visualization tools 
    - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
    - 0306 : Query image에 대한 Attention roll out 완료 
    - 0310 : Query image에 대한 Visualize 결과 통합
@@ -208,7 +213,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
      - HARDEST QUERY 출력 완료
      - Positional Embedding visualize 완료
    - 0320 : Weight and Bias logging added, Elemented weighted triplet loss added
-   ## Method 1
+- ## Method 1
    - 0322 :
      - Patch wise Triplet loss 구현
        - Cosine distance FIX 완료
@@ -246,7 +251,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
       - 6.4의 baseline code와 code merge 완료
    - 0428 - 0430 : Non-dominant feature의 normalization method changed
   
-  ## (0513 추가) Method 1의 실패 원인 분석 
+  - ### (0513 추가) Method 1의 실패 원인 분석 
     - 제안한 방법을 적용하였을때, 여러 dataset에 대한 일관성이 확보 되지 않음을 알게 되었다. (일부 hyperparameter setting의 Market 1501 data에 대해서만 성능이 향상, 거의 다 하락)
     - *ViT의 기본적인 동작을 간과한 나의 실수* 이다.
     - 분석
@@ -257,11 +262,20 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
       - Method 1에서 Non-dominant feature를 뽑기 위해 CLS token과 patch token간 차를 구하게 된다. 이 후, 이를 기준으로 CLS token에 element-wise로 곱해질 weight vector를 얻는다. 이것이 CLS token에 곱해진 후, triplet loss를 구하게 되면 back propagation 과정에 patch token feature의 영향을 받게 된다.
       - 즉, patch token feature가 loss의 연산에 개입하게 되면서 Key 입장에서만 고려되었던 patch token들이 Query 입장에서도 고려되게 되어 Query CLS token 중심의 학습이 깨지게 된다. (ViT의 본래 학습 과정과 반대 방향으로 학습이 이뤄진다)
     - 결론 : *CLS token(Query) 중심의 ViT 학습에 반하지 않으려면 Patch token feature가 직접적인 supervision을 받지 않도록 loss를 설계 해야한다.*
-
-    
-  ## Method 2
-    - 
-
+    - (0601) Method 1 Drop 결정 
+- ## Method 2
+  - Motivation
+    - ViT의 구조적 특성을 Re-ID의 학습과정에 적극적으로 반영해보자!
+    - Patch 단위로 image를 처리하는 ViT를 이용하여 Re-ID dataset의 특성을 modeling 할 수 있지 있을까?
+  - Idea
+    - ViT의 unique한 구조 중 하나인 positional embedding을 사용하여, Re-ID sample에 대해 사람의 각 신체 부위를 담고 있는 patch간 상대적 위치 관계를 model이 학습할 수 있도록 하자.
+    - 같은 ID의 sample은 신체 부위의 상대적 위치 관계가 비슷하다는 사실을 model에게 supervise, 즉 주요 patch들간 relative positional bias 분포가 비슷하도록 유도
+  - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Explanation%20of%20RPE.md)
+  - 0505-0509 : Position Loss 설계 구현
+    - 각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
+    ![Selecting_patch](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
+    1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Insight%20in%20Classifier%20layer.md)
+    2. 
 # Etc
   1. Matplotlib 사용법
    - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)
@@ -286,5 +300,5 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
         - MSMT17-V2는 MSMT17과 모든 spec이 같지만, 위 그림 처럼 얼굴부분이 전부 모자이크 처리 되어있다. 모자이크 처리 되어있는 상태의 dataset을 가지고 실험을 진행했기 때문에 재현이 되지 않은 것은 당연하다.
       - Cuhk03-np
         - Cuhk03 또한 new protocol로 촬영된 version인 Cuhk03-np를 사용해야한다.
-      - Benchmark : Paperswithcode에서는 각 dataset의 version을 고려하지 않고 성능 순위를 매긴다. 따라서, 각 논문이 어떤 version의 dataset을 써서 성능을 측정하였는지 확인해가며 benchmark를 하는 것이 중요 하다.
+      - Benchmark : Paperswithcode에서는 각 dataset의 version을 고려하지 않고 성능 순위를 매긴다. 따라서, 각 논문이 어떤 version의 dataset을 써서 성능을 측정하였는지 확인해가며 benchmark를 하는 것이 중요하다.
 

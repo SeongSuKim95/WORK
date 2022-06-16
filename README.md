@@ -133,7 +133,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 ## 1. Attention + CNN 
 ## 2. About Transformer 
 ## 3. Nature of Transformer  
-  - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
+  - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Paper_review/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
 ## 4. Positional Encoding of Transformer 
   - ### 4.1 __On the relationship between self-attention and convolution layers (ICLR 2020)__
   - ### 4.2 __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__
@@ -151,10 +151,10 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
       - __이 사실을 깨달은 것이 매우 중요하다. "막연하게 positional embedding이 locality inductive bias가 될 수 있지 않을까?" 라는 생각이 "ViT 에선 Inductive bias를 주기 위해 positional embedding을 설계해야 한다" 라는 확신으로 바뀌기 때문이다.__
       - 즉 내가 할일은 기존 CNN에서 사람들이 ReID를 잘 수행하기 위해 network에 주었던 specific한 inductive bias가 있다면 이를 찾고, 이를 positional embedding에 반영할 수 있는 방법을 찾는 것이다.  
     - 한가지 주의해야할 점이 있다. __위 두 논문은, linear probing 단계에서 둘다 GAP를 사용하여 성능을 측정하였다. 3.2 논문의 실험 결과와 연결지어 생각해보고 논리 전개의 모순이 있는지 확인해야 한다.__ 
-  - ### 4.3 __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.3%20On%20position%20embeddings%20in%20BERT.md)
-  - ### 4.4  __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.4%20Rethinking%20positional%20encoding%20in%20language%20pre-training.md)
-  - ### 4.5 __Do we Really Need Explicit Position Encodings for Vision Transformers?(21/02/22)__[[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.5%20Do%20we%20Really%20Need%20Explicit%20Position%20Encodings%20for%20Vision%20Transformers.md)
-  - ### 4.6 __Rethinking and Improving Relative Position Encoding for Vision Transformer__ (ICCV 2021, 21/07/29)[[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.6%20Rethinking%20and%20Improving%20Relative%20Position%20Encoding%20for%20Vision%20Transformer.md)
+  - ### 4.3 __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.3%20On%20position%20embeddings%20in%20BERT.md)
+  - ### 4.4  __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.4%20Rethinking%20positional%20encoding%20in%20language%20pre-training.md)
+  - ### 4.5 __Do we Really Need Explicit Position Encodings for Vision Transformers?(21/02/22)__[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.5%20Do%20we%20Really%20Need%20Explicit%20Position%20Encodings%20for%20Vision%20Transformers.md)
+  - ### 4.6 __Rethinking and Improving Relative Position Encoding for Vision Transformer__ (ICCV 2021, 21/07/29)[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.6%20Rethinking%20and%20Improving%20Relative%20Position%20Encoding%20for%20Vision%20Transformer.md)
 ## 5. Injecting bias to Transformer 
   - 5.5 Swin Transformer는 convolution 의 filter 개념을 window 라는 개념으로 치환하여 적용한 Transformer이다. 방법이 아무리 복잡하더라도, 개념적으로 쉽고 납득이 잘가면서 좋은 결과를 얻을 수 있다는 것이 매우 매력적이다. Window라는 개념이 ReID에 쓰인다면 어떻게 쓰여야 할까..? 사람의 특성을 생각하여 Vertical한 방향으로 Window를 확장해 나간다면..?
   - Window의 위치 정볼르 encoding하기 위해 relative positional embedding 기법이 사용되었다. 코드가 굉장히 직관적이고 구현이 쉬워서 이를 내 구현에 참고하고자 한다.

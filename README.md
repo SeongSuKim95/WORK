@@ -120,13 +120,12 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 
 각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?
 1. Attention + CNN 
-2. About Transformer (100%)
-3. Nature of Transformer (70%)
+2. About Transformer (80%)
+3. Nature of Transformer (80%)
 4. Positional Encoding of Transformer (100%)
 5. Injecting bias to Transformer (70%)
 6. Using Transformer in Re-ID (80%)
-7. ReID (90%) 
-8. Implementation & Details (100%) - 04/21 - 06/11 Finished
+7. Implementation & Details (100%) - 04/21 - 06/11 Finished
 # KEY IDEA 
 
 여러 논문들을 읽으면서 얻은 KEY IDEA 들을 적는다. Groups의 index로 논문을 표시한다.
@@ -134,7 +133,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 ## 1. Attention + CNN 
 ## 2. About Transformer 
 ## 3. Nature of Transformer  
-  - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
+  - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
 ## 4. Positional Encoding of Transformer 
   - ### 4.1 __On the relationship between self-attention and convolution layers (ICLR 2020)__
   - ### 4.2 __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__
@@ -152,10 +151,10 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
       - __이 사실을 깨달은 것이 매우 중요하다. "막연하게 positional embedding이 locality inductive bias가 될 수 있지 않을까?" 라는 생각이 "ViT 에선 Inductive bias를 주기 위해 positional embedding을 설계해야 한다" 라는 확신으로 바뀌기 때문이다.__
       - 즉 내가 할일은 기존 CNN에서 사람들이 ReID를 잘 수행하기 위해 network에 주었던 specific한 inductive bias가 있다면 이를 찾고, 이를 positional embedding에 반영할 수 있는 방법을 찾는 것이다.  
     - 한가지 주의해야할 점이 있다. __위 두 논문은, linear probing 단계에서 둘다 GAP를 사용하여 성능을 측정하였다. 3.2 논문의 실험 결과와 연결지어 생각해보고 논리 전개의 모순이 있는지 확인해야 한다.__ 
-  - ### 4.3 __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [[Summary Link]]()
-  - ### 4.4  __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[Summary Link]]()
-  - ### 4.5 __Do we Really Need Explicit Position Encodings for Vision Transformers?(21/02/22)__[[Summary Link]]()
-  - ### 4.6 __Rethinking and Improving Relative Position Encoding for Vision Transformer__ (ICCV 2021, 21/07/29)[[Summary Link]]()
+  - ### 4.3 __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.3%20On%20position%20embeddings%20in%20BERT.md)
+  - ### 4.4  __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.4%20Rethinking%20positional%20encoding%20in%20language%20pre-training.md)
+  - ### 4.5 __Do we Really Need Explicit Position Encodings for Vision Transformers?(21/02/22)__[[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.5%20Do%20we%20Really%20Need%20Explicit%20Position%20Encodings%20for%20Vision%20Transformers.md)
+  - ### 4.6 __Rethinking and Improving Relative Position Encoding for Vision Transformer__ (ICCV 2021, 21/07/29)[[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/4.6%20Rethinking%20and%20Improving%20Relative%20Position%20Encoding%20for%20Vision%20Transformer.md)
 ## 5. Injecting bias to Transformer 
   - 5.5 Swin Transformer는 convolution 의 filter 개념을 window 라는 개념으로 치환하여 적용한 Transformer이다. 방법이 아무리 복잡하더라도, 개념적으로 쉽고 납득이 잘가면서 좋은 결과를 얻을 수 있다는 것이 매우 매력적이다. Window라는 개념이 ReID에 쓰인다면 어떻게 쓰여야 할까..? 사람의 특성을 생각하여 Vertical한 방향으로 Window를 확장해 나간다면..?
   - Window의 위치 정볼르 encoding하기 위해 relative positional embedding 기법이 사용되었다. 코드가 굉장히 직관적이고 구현이 쉬워서 이를 내 구현에 참고하고자 한다.
@@ -175,8 +174,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
       - CLS token - patch token similarity rank와 Classifier weight - patch token similarity rank를 비교해보면 결과가 꽤 유사하다. 즉, sample내에서 중요한 patch가 해당 class의 일반적인 특징을 가진 patch일 확률이 높다.
   
 # Sketch
-Idea ,Facts를 기반으로 Idea를 구상한다.
-
+Idea ,Facts를 기반으로 Idea를 구상한다. 
  
 ### Idea 1: *Vision Transformer의 Self attention mechanism이 metric learning에 더 유용하도록 loss를 설계할 수 있는가?* 
 ### Idea 2 :  *Patch단위의 정보를 유지하는 vision transformer의 특성과, 사람의 신체 구조를 학습할 수 있는 relative postional encoding을 통한 inductive bias으로 ReID의 성능을 올릴 수 있는가?*
@@ -200,6 +198,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
   11. 여러 ReID dataset(Market-1501, DukeMTMC-ReID, CHUK03-np, MSMT17-V2)에 대해 제안한 방식을 통한 성능향상이 있음을 확인했다.
 # Working process with Time log 
+
+- ## Code Repository [[LINK]](https://github.com/SeongSuKim95/TransReID)
 - ## Structure of ViT based ReID   
 ![ViT_ReID](https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG)
   
@@ -262,8 +262,10 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
       - Method 1에서 Non-dominant feature를 뽑기 위해 CLS token과 patch token간 차를 구하게 된다. 이 후, 이를 기준으로 CLS token에 element-wise로 곱해질 weight vector를 얻는다. 이것이 CLS token에 곱해진 후, triplet loss를 구하게 되면 back propagation 과정에 patch token feature의 영향을 받게 된다.
       - 즉, patch token feature가 loss의 연산에 개입하게 되면서 Key 입장에서만 고려되었던 patch token들이 Query 입장에서도 고려되게 되어 Query CLS token 중심의 학습이 깨지게 된다. (ViT의 본래 학습 과정과 반대 방향으로 학습이 이뤄진다)
     - 결론 : *CLS token(Query) 중심의 ViT 학습에 반하지 않으려면 Patch token feature가 직접적인 supervision을 받지 않도록 loss를 설계 해야한다.*
-    - (0601) Method 1 Drop 결정 
+    - (0601) Method 1 Drop 
 - ## Method 2
+  - Structure
+    ![Structure](https://user-images.githubusercontent.com/62092317/174054133-fe75af45-3e2c-45e0-b56f-7adbeb81806a.PNG)
   - Motivation
     - ViT의 구조적 특성을 Re-ID의 학습과정에 적극적으로 반영해보자!
     - Patch 단위로 image를 처리하는 ViT를 이용하여 Re-ID dataset의 특성을 modeling 할 수 있지 있을까?
@@ -271,11 +273,37 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - ViT의 unique한 구조 중 하나인 positional embedding을 사용하여, Re-ID sample에 대해 사람의 각 신체 부위를 담고 있는 patch간 상대적 위치 관계를 model이 학습할 수 있도록 하자.
     - 같은 ID의 sample은 신체 부위의 상대적 위치 관계가 비슷하다는 사실을 model에게 supervise, 즉 주요 patch들간 relative positional bias 분포가 비슷하도록 유도
   - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Explanation%20of%20RPE.md)
-  - 0505-0509 : Position Loss 설계 구현
+  - 0505 : Position information modeling 설계 구현
     - 각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
     ![Selecting_patch](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
     1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Insight%20in%20Classifier%20layer.md)
-    2. 
+    2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.
+    3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
+    ![patch_information](https://user-images.githubusercontent.com/62092317/174057266-ff317234-43f2-488d-b040-c652ac34ea3d.PNG)
+    ![positive_vector](https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG) 
+    각 관계에 대해 생성한 값을 concat하여 하나의 tensor로 만든다.
+  - 0506 : Wandb Sweep file created
+  - 0507-0508 : 어떤 loss를 사용하여 supervise?
+    - ![Pos_triplet](https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png)
+    - 가장 먼저 든 생각은 triplet loss 이다. Anchor와 positive sample들에 대해 생성한 position 정보들을 head, layer 별로 concat하여 vector를 만들고 Euclidean distance를 최소화 하는 방향을 사용했다.
+    - 실험결과, mAP 측정시 초반 학습이 매우 강했으나 학습 중반부터 학습이 오히려 떨어지더니 loss가 발산해버렸다.
+    - ## Triplet loss의 실패 원인 분석
+      - *Triplet loss의 성질과 position vector의 numerical한 특성을 고려하지 않았기 떄문*이다.
+      - Triplet loss는 기본적으로 sample의 feature vector에 대해 적용되며, 이 feature vector를 euclidean space에 projection한 후 distance를 계산한다. 
+      - 내가 추출한 position 정보는 Attention score에 기반한 값이기 떄문에, *feature가 아닌 similarity* 이다. Similarity는 Euclidean space에서 다루지 않고 probability density의 형태로 사용한다.
+      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다.[[Link : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/Summary/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
+      - Solution : KL divergence loss를 사용하자!
+  - 0510 : Jensen-Shannon Divergence loss added
+    - Anchor와 positive의 position vector 각각에 softmax를 취한 후 KL divergence를 구하자 loss가 발산하는 문제가 사라졌다.
+    - KL divegence loss는 수식상 non-symmetric한 성질을 갖는다. 즉, Anchor와 positive가 switch 되었을 때 loss값이 다르다.
+    - 나의 idea상에선 같은 ID의 sample에 대해서 동일한 supervision이 이루어지길 바라기 때문에 Symmetry가 보장된 Jensen-Shannon Divergence loss를 사용하였다.
+  - 0515 : Head-wise JSD loss implemented
+  - 0516 : DukeMTMC, MSMT17, OCC-Duke dataset class added
+  - 0522 : Combination with replacement added
+  - 0524 : y-axis wise Relative position bias added 
+  - 0530 : cuhk03-np dataset class added
+  - 0604 : CLS attention score untie
+  - 0610 : Code clean up, Freeze
 # Etc
   1. Matplotlib 사용법
    - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)

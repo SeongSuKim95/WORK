@@ -191,8 +191,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   4. 이 positional embedding은 크게 두 종류로 나뉘는데, APE와 RPE이다.
   5. RPE는 vision 영역에서 efficacy가 충분히 검증되지 않았다. 또, 이것의 학습이 image에 대해 충분히 이루어지는지도 미지수이다.
   6. 이는 image와 sentence의 구조적 차이가 충분히 반영되지 않았기 때문이다. 이를 해결하기 위해 RPE에 여러 기법들이 적용된 논문들이 있다. Swin transformer는 RPE를 bias의 형태로 단순화하여 적용하였을 때 성능적으로 우수함을 입증하였다.
-  - ImageNet : ![Image_Net](https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG)
-  - ReID dataset : ![ReID_data](https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG)
+  - ImageNet : <center><img src = "https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG" width="800" height="200"></center> 
+  - ReID dataset : <center><img src = "https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG" width="400" height="500"></center>
   7. Re-ID dataset은 여타 image dataset과 다르게, 모든 sample이 사람을 대상으로 하기 떄문에 sample간 correlation(즉, 형태적 유사성)이 높다. 즉 sample내 object의 형태가 비슷하기 때문에 patch의 위치가 갖는 의미가 다른 dataset에 비해 크다. 
   9. 따라서, PE가 갖는 특성을 활용해 ReID dataset을 효율적으로 학습할 수 있도록 explicit한 supervision을 주고자 한다.
   10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
@@ -201,13 +201,13 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 
 - ## Code Repository [[LINK]](https://github.com/SeongSuKim95/TransReID)
 - ## Structure of ViT based ReID   
-![ViT_ReID](https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG)
+<center><img src="https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG" width="800" height = "400"></center>
   
 - ## Visualization tools 
    - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
    - 0306 : Query image에 대한 Attention roll out 완료 
    - 0310 : Query image에 대한 Visualize 결과 통합
-     ![show](https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png)
+     <center><img src="https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png" width="600" height="400"></center>
    - 0315 :  
      - Training / Weight & Bias 를 통해 attention map 연동 완료
      - HARDEST QUERY 출력 완료
@@ -228,7 +228,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
    - 0402 : Patch similarity를 기반으로 한 patch selecting algorithm 구현
    - 0406 : 학습이 진행됨에 따라(즉, Epoch이 늘어남에 따라), 학습의 근거가 되는 patch들의 비율을 점점 줄여나가도록 supervise
       - Ex) 초반 학습에선 sample의 50% patch만을 근거로 삼도록, 후반 학습에선 sample의 10% patch만으로도 학습이 이루어지도록
-        ![Patch_Similarity](https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG)
+        <center><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="600" height="700"></center>
         - 기대 효과 - 모델이 similarity가 높은 patch에 더 집중할 수 있어, feature의 localization에 도움이 될것을 예상
         - 실험 결과 - mAP, Rank1 score 기준으로 학습에 큰 영향을 주지 않음
         - 원인 분석 - Simiarity 값이 softmax function을 통과하기 때문에, 모델은 이미 최상위 몇개의 patch에 집중한 상태이므로 하위 rank patch들의 영향력이 적음
@@ -265,7 +265,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - (0601) Method 1 Drop 
 - ## Method 2
   - Structure
-    ![Structure](https://user-images.githubusercontent.com/62092317/174054133-fe75af45-3e2c-45e0-b56f-7adbeb81806a.PNG)
+    ![Overall structure](https://user-images.githubusercontent.com/62092317/174543451-f565ee96-6358-463a-a4f3-9a2a01a182f0.PNG)
   - Motivation
     - ViT의 구조적 특성을 Re-ID의 학습과정에 적극적으로 반영해보자!
     - Patch 단위로 image를 처리하는 ViT를 이용하여 Re-ID dataset의 특성을 modeling 할 수 있지 있을까?
@@ -279,12 +279,12 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Insight%20in%20Classifier%20layer.md)
     2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.
     3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
-    ![patch_information](https://user-images.githubusercontent.com/62092317/174057266-ff317234-43f2-488d-b040-c652ac34ea3d.PNG)
-    ![positive_vector](https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG) 
+    <center><img src = "https://user-images.githubusercontent.com/62092317/174057266-ff317234-43f2-488d-b040-c652ac34ea3d.PNG" width = "600" height = "300"></center>
+    <center><img src = "https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG" width = "500" height = "400"/></center>
     각 관계에 대해 생성한 값을 concat하여 하나의 tensor로 만든다.
   - 0506 : Wandb Sweep file created
   - 0507-0508 : 어떤 loss를 사용하여 supervise?
-    - ![Pos_triplet](https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png)
+    <center><img src ="https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png" width="600" height="300"/></center>
     - 가장 먼저 든 생각은 triplet loss 이다. Anchor와 positive sample들에 대해 생성한 position 정보들을 head, layer 별로 concat하여 vector를 만들고 Euclidean distance를 최소화 하는 방향을 사용했다.
     - 실험결과, mAP 측정시 초반 학습이 매우 강했으나 학습 중반부터 학습이 오히려 떨어지더니 loss가 발산해버렸다.
     - ## Triplet loss의 실패 원인 분석
@@ -304,6 +304,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - 0530 : cuhk03-np dataset class added
   - 0604 : CLS attention score untie
   - 0610 : Code clean up, Freeze
+  - 0620 : 전체 구조를 설명하는 그림이 너무 마음에 안들어서 다시 만들었다. 내 논문에 실제로 쓰일 그림
 # Etc
   1. Matplotlib 사용법
    - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)
@@ -324,9 +325,10 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
         - TransReID-SSL[6.4] 논문에 나와있는 성능을 official code를 통해 재현하려고 하였는데, Market-1501은 재현이 잘되는 반면 MSMT17에 대해선 꽤 큰 폭으로 하락한 성능이 나오는 것을 확인하였다.
         - 처음엔 코드 설정의 문제인가 하고 hyperparameter및 configuration을 전부 확인해봤지만, 이상한점을 찾을 수 없었다.
         - Data loader 부분의 root directory 부분을 살펴보니, 내가 사용하고 있는 dataset과 경로가 다르게 설정되어있는 것을 알 수 있었다. 이는 [6.4]의 논문이 MSMT17을 사용한 반면, 나는 MSMT17-V2를 사용하여 발생한 차이였다. 
-        ![MSMT17_V2](https://user-images.githubusercontent.com/62092317/173303286-687583e8-7f84-4819-8653-6ed8c191ef1a.PNG)
+        <center><img src="https://user-images.githubusercontent.com/62092317/173303286-687583e8-7f84-4819-8653-6ed8c191ef1a.PNG" width="300" height="300"/></center>
         - MSMT17-V2는 MSMT17과 모든 spec이 같지만, 위 그림 처럼 얼굴부분이 전부 모자이크 처리 되어있다. 모자이크 처리 되어있는 상태의 dataset을 가지고 실험을 진행했기 때문에 재현이 되지 않은 것은 당연하다.
       - Cuhk03-np
         - Cuhk03 또한 new protocol로 촬영된 version인 Cuhk03-np를 사용해야한다.
       - Benchmark : Paperswithcode에서는 각 dataset의 version을 고려하지 않고 성능 순위를 매긴다. 따라서, 각 논문이 어떤 version의 dataset을 써서 성능을 측정하였는지 확인해가며 benchmark를 하는 것이 중요하다.
+
 

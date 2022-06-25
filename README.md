@@ -273,13 +273,14 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - ViT의 unique한 구조 중 하나인 positional embedding을 사용하여, Re-ID sample에 대해 사람의 각 신체 부위를 담고 있는 patch간 상대적 위치 관계를 model이 학습할 수 있도록 하자.
     - 같은 ID의 sample은 신체 부위의 상대적 위치 관계가 비슷하다는 사실을 model에게 supervise, 즉 주요 patch들간 relative positional bias 분포가 비슷하도록 유도
   - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Explanation%20of%20RPE.md)
+   <center><img src="https://user-images.githubusercontent.com/62092317/175779002-fa5a2da7-47b8-4770-a5ec-4338928a918e.PNG" width = "800" height = "400"></center>
   - 0505 : Position information modeling 설계 구현
     - 각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
     ![Selecting_patch](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
     1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Insight%20in%20Classifier%20layer.md)
     2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.
     3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
-    <center><img src = "https://user-images.githubusercontent.com/62092317/174057266-ff317234-43f2-488d-b040-c652ac34ea3d.PNG" width = "600" height = "300"></center>
+    <center><img src="https://user-images.githubusercontent.com/62092317/175778998-5ca7d4fd-f5b6-437b-b2c3-789038795319.PNG" width = "400" height = "400"></center>
     <center><img src = "https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG" width = "500" height = "400"/></center>
     각 관계에 대해 생성한 값을 concat하여 하나의 tensor로 만든다.
   - 0506 : Wandb Sweep file created
@@ -304,7 +305,9 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - 0530 : cuhk03-np dataset class added
   - 0604 : CLS attention score untie
   - 0610 : Code clean up, Freeze
-  - 0620 : 전체 구조를 설명하는 그림이 너무 마음에 안들어서 다시 만들었다. 내 논문에 실제로 쓰일 그림
+  - 0620 : Overall sturcture main figure fixed
+  - 0620 : Positional Embedding Visualization
+  - 0621 : 전체 논문 구조도 수정, Selecting patches, RPE 그림 수정
 # Etc
   1. Matplotlib 사용법
    - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)

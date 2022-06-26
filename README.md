@@ -228,7 +228,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
    - 0402 : Patch similarity를 기반으로 한 patch selecting algorithm 구현
    - 0406 : 학습이 진행됨에 따라(즉, Epoch이 늘어남에 따라), 학습의 근거가 되는 patch들의 비율을 점점 줄여나가도록 supervise
       - Ex) 초반 학습에선 sample의 50% patch만을 근거로 삼도록, 후반 학습에선 sample의 10% patch만으로도 학습이 이루어지도록
-        <center><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="600" height="700"></center>
+        - <center><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="600" height="700"></center>
         - 기대 효과 - 모델이 similarity가 높은 patch에 더 집중할 수 있어, feature의 localization에 도움이 될것을 예상
         - 실험 결과 - mAP, Rank1 score 기준으로 학습에 큰 영향을 주지 않음
         - 원인 분석 - Simiarity 값이 softmax function을 통과하기 때문에, 모델은 이미 최상위 몇개의 patch에 집중한 상태이므로 하위 rank patch들의 영향력이 적음
@@ -265,7 +265,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - (0601) Method 1 Drop 
 - ## Method 2
   - Structure
-    ![Overall structure](https://user-images.githubusercontent.com/62092317/174543451-f565ee96-6358-463a-a4f3-9a2a01a182f0.PNG)
+    ![Overall structure](https://user-images.githubusercontent.com/62092317/175780925-79361856-0926-40df-8a13-d3160ff85c67.PNG)
   - Motivation
     - ViT의 구조적 특성을 Re-ID의 학습과정에 적극적으로 반영해보자!
     - Patch 단위로 image를 처리하는 ViT를 이용하여 Re-ID dataset의 특성을 modeling 할 수 있지 있을까?
@@ -273,26 +273,25 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - ViT의 unique한 구조 중 하나인 positional embedding을 사용하여, Re-ID sample에 대해 사람의 각 신체 부위를 담고 있는 patch간 상대적 위치 관계를 model이 학습할 수 있도록 하자.
     - 같은 ID의 sample은 신체 부위의 상대적 위치 관계가 비슷하다는 사실을 model에게 supervise, 즉 주요 patch들간 relative positional bias 분포가 비슷하도록 유도
   - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Explanation%20of%20RPE.md)
-   <center><img src="https://user-images.githubusercontent.com/62092317/175779002-fa5a2da7-47b8-4770-a5ec-4338928a918e.PNG" width = "800" height = "400"></center>
+  - <center><img src="https://user-images.githubusercontent.com/62092317/175779002-fa5a2da7-47b8-4770-a5ec-4338928a918e.PNG" width = "800" height = "400"></center>
   - 0505 : Position information modeling 설계 구현
-    - 각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
-    ![Selecting_patch](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
-    1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.[[Link : Classifier weight와 similarity를 구하는 이유]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Insight%20in%20Classifier%20layer.md)
-    2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.
-    3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
-    <center><img src="https://user-images.githubusercontent.com/62092317/175778998-5ca7d4fd-f5b6-437b-b2c3-789038795319.PNG" width = "400" height = "400"></center>
-    <center><img src = "https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG" width = "500" height = "400"/></center>
+    각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
+     1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.
+     2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.[[LINK : Selecting patches]](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
+     3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
+    - <center><img src="https://user-images.githubusercontent.com/62092317/175778998-5ca7d4fd-f5b6-437b-b2c3-789038795319.PNG" width = "400" height = "400"></center>
+    - <center><img src = "https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG" width = "500" height = "400"/></center>
     각 관계에 대해 생성한 값을 concat하여 하나의 tensor로 만든다.
   - 0506 : Wandb Sweep file created
   - 0507-0508 : 어떤 loss를 사용하여 supervise?
-    <center><img src ="https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png" width="600" height="300"/></center>
+    - <center><img src ="https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png" width="600" height="300"/></center>
     - 가장 먼저 든 생각은 triplet loss 이다. Anchor와 positive sample들에 대해 생성한 position 정보들을 head, layer 별로 concat하여 vector를 만들고 Euclidean distance를 최소화 하는 방향을 사용했다.
     - 실험결과, mAP 측정시 초반 학습이 매우 강했으나 학습 중반부터 학습이 오히려 떨어지더니 loss가 발산해버렸다.
     - ## Triplet loss의 실패 원인 분석
       - *Triplet loss의 성질과 position vector의 numerical한 특성을 고려하지 않았기 떄문*이다.
       - Triplet loss는 기본적으로 sample의 feature vector에 대해 적용되며, 이 feature vector를 euclidean space에 projection한 후 distance를 계산한다. 
       - 내가 추출한 position 정보는 Attention score에 기반한 값이기 떄문에, *feature가 아닌 similarity* 이다. Similarity는 Euclidean space에서 다루지 않고 probability density의 형태로 사용한다.
-      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다.[[Link : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
+      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다. [[Link : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
       - Solution : KL divergence loss를 사용하자!
   - 0510 : Jensen-Shannon Divergence loss added
     - Anchor와 positive의 position vector 각각에 softmax를 취한 후 KL divergence를 구하자 loss가 발산하는 문제가 사라졌다.
@@ -307,7 +306,10 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - 0610 : Code clean up, Freeze
   - 0620 : Overall sturcture main figure fixed
   - 0620 : Positional Embedding Visualization
-  - 0621 : 전체 논문 구조도 수정, Selecting patches, RPE 그림 수정
+  - 0623 : Rank 1 sample 비교하기
+    - 
+  - 0625 : 전체 논문 구조도 수정, Selecting patches, RPE 그림 수정
+  - 0626 : Ablation study & Experimental results 
 # Etc
   1. Matplotlib 사용법
    - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)
@@ -328,7 +330,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
         - TransReID-SSL[6.4] 논문에 나와있는 성능을 official code를 통해 재현하려고 하였는데, Market-1501은 재현이 잘되는 반면 MSMT17에 대해선 꽤 큰 폭으로 하락한 성능이 나오는 것을 확인하였다.
         - 처음엔 코드 설정의 문제인가 하고 hyperparameter및 configuration을 전부 확인해봤지만, 이상한점을 찾을 수 없었다.
         - Data loader 부분의 root directory 부분을 살펴보니, 내가 사용하고 있는 dataset과 경로가 다르게 설정되어있는 것을 알 수 있었다. 이는 [6.4]의 논문이 MSMT17을 사용한 반면, 나는 MSMT17-V2를 사용하여 발생한 차이였다. 
-        <center><img src="https://user-images.githubusercontent.com/62092317/173303286-687583e8-7f84-4819-8653-6ed8c191ef1a.PNG" width="300" height="300"/></center>
+        - <center><img src="https://user-images.githubusercontent.com/62092317/173303286-687583e8-7f84-4819-8653-6ed8c191ef1a.PNG" width="300" height="300"/></center>
         - MSMT17-V2는 MSMT17과 모든 spec이 같지만, 위 그림 처럼 얼굴부분이 전부 모자이크 처리 되어있다. 모자이크 처리 되어있는 상태의 dataset을 가지고 실험을 진행했기 때문에 재현이 되지 않은 것은 당연하다.
       - Cuhk03-np
         - Cuhk03 또한 new protocol로 촬영된 version인 Cuhk03-np를 사용해야한다.

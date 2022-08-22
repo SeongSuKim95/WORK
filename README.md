@@ -112,16 +112,14 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 - Weight & Biase [[LINK]](https://89douner.tistory.com/313)
   - Loss plot per epoch & iteration [[LINK]](https://github.com/wandb/client/issues/1591)
 
-# Process
+# Study 
 
-각 부분에 대해 공부가 얼마나 진행되고 있는지 나타낸다. 근데 100%를 채울수 있을까...?
 1. Attention + CNN 
-2. About Transformer (80%)
-3. Nature of Transformer (80%)
-4. Positional Encoding of Transformer (100%)
-5. Injecting bias to Transformer (70%)
-6. Using Transformer in Re-ID (80%)
-7. Implementation & Details (100%) - 04/21 - 06/11 Finished
+2. About Transformer 
+3. Nature of Transformer 
+4. Positional Encoding of Transformer
+5. Using Transformer in Re-ID 
+6. Implementation & Details : 04/21 - 06/11 Finished
 # KEY IDEA 
 
 여러 논문들을 읽으면서 얻은 KEY IDEA 들을 적는다. Groups의 index로 논문을 표시한다.
@@ -132,15 +130,13 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
   - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Paper_review/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
 ## 4. Positional Encoding of Transformer 
   - ### 4.1 __On the relationship between self-attention and convolution layers (ICLR 2020)__
-  - ### 4.2 __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__
+  - ### 4.2 __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.1-2%20On%20the%20relationship%20between%20self-attention%20and%20convolution%20layers%2C%20Can%20Vision%20Transformer%20Perform%20Convolution%3F.md)
   - ### 4.3 __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.3%20On%20position%20embeddings%20in%20BERT.md)
   - ### 4.4  __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.4%20Rethinking%20positional%20encoding%20in%20language%20pre-training.md)
   - ### 4.5 __Do we Really Need Explicit Position Encodings for Vision Transformers?(21/02/22)__[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.5%20Do%20we%20Really%20Need%20Explicit%20Position%20Encodings%20for%20Vision%20Transformers.md)
   - ### 4.6 __Rethinking and Improving Relative Position Encoding for Vision Transformer__ (ICCV 2021, 21/07/29)[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.6%20Rethinking%20and%20Improving%20Relative%20Position%20Encoding%20for%20Vision%20Transformer.md)
-## 5. Injecting bias to Transformer 
-  - 5.5 Swin Transformer는 convolution 의 filter 개념을 window 라는 개념으로 치환하여 적용한 Transformer이다. 방법이 아무리 복잡하더라도, 개념적으로 쉽고 납득이 잘가면서 좋은 결과를 얻을 수 있다는 것이 매우 매력적이다. Window라는 개념이 ReID에 쓰인다면 어떻게 쓰여야 할까..? 사람의 특성을 생각하여 Vertical한 방향으로 Window를 확장해 나간다면..?
-  - Window의 위치 정볼르 encoding하기 위해 relative positional embedding 기법이 사용되었다. 코드가 굉장히 직관적이고 구현이 쉬워서 이를 내 구현에 참고하고자 한다.
-## 6. Using Transformer in Re-ID 
+
+## 5. Using Transformer in Re-ID 
 # IMPORTANT FACTS
   - Transformer를 이용한 Classification를 다루는 모든 논문의 benchmarking은 2.4(DeiT)와의 비교를 통해 이루어진다. ReID는 기본적으로 classification 이므로 참고해야할듯 하다.
   - Classification에서의 효율적인 positional encoding 방식은 relative positonal encoding이다. 이 과정에서 CLS token에 대한 고려는 반드시 이루어져야 한다. 
@@ -159,7 +155,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 Idea ,Facts를 기반으로 Idea를 구상한다. 
  
 ### Idea 1: *Vision Transformer의 Self attention mechanism이 metric learning에 더 유용하도록 loss를 설계할 수 있는가?* 
-### Idea 2 :  *Patch단위의 정보를 유지하는 vision transformer의 특성과, 사람의 신체 구조를 학습할 수 있는 relative postional encoding을 통한 inductive bias으로 ReID의 성능을 올릴 수 있는가?*
+### Idea 2 : *Patch단위의 정보를 유지하는 vision transformer의 특성과, 사람의 신체 구조를 학습할 수 있는 relative postional encoding을 통한 inductive bias으로 ReID의 성능을 올릴 수 있는가?*
 - 먼저, 3.2에 근거하여 output patch를 사용하는 것이 나아보인다. 어찌되었건 각 part image에 coressponding한 정보를 담고 있기 때문이다. 골라낼 수만 있다면, element weighted triplet hard loss 처럼 loss에 적용할 수도 있겠다.
   - 6.2 논문이 이 Idea를 기반으로 ReID를 수행하였으나, 방법만 제시하고 해석은 제시되어 있지 않다.
 - Relative position을 사용해야한다. 이 과정에서 relative positional bias를 어떻게 사용하여 inductive bias를 modeling 하느냐가 관건이 되겠다.
@@ -179,23 +175,11 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   9. 따라서, PE가 갖는 특성을 활용해 ReID dataset을 효율적으로 학습할 수 있도록 explicit한 supervision을 주고자 한다.
   10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
   11. 여러 ReID dataset(Market-1501, DukeMTMC-ReID, CHUK03-np, MSMT17-V2)에 대해 제안한 방식을 통한 성능향상이 있음을 확인했다.
-# Working process with Time log 
+# Working process  
 
-- ## Code Repository [[LINK]](https://github.com/SeongSuKim95/TransReID)
-- ## Structure of ViT based ReID   
-<center><img src="https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG" width="600" height = "300"></center>
-  
-- ## Visualization tools 
-   - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
-   - 0306 : Query image에 대한 Attention roll out 완료 
-   - 0310 : Query image에 대한 Visualize 결과 통합
-     <center><img src="https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png" width="600" height="400"></center>
-   - 0315 :  
-     - Training / Weight & Bias 를 통해 attention map 연동 완료
-     - HARDEST QUERY 출력 완료
-     - Positional Embedding visualize 완료
-   - 0320 : Weight and Bias logging added, Elemented weighted triplet loss added
-- ## Method 1
+- ## Code Repository [[LINK]](https://github.com/SeongSuKim95/TransReID) 
+
+- ## Proposed Method 1
    - 0322 :
      - Patch wise Triplet loss 구현
        - Cosine distance FIX 완료
@@ -245,7 +229,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
       - 즉, patch token feature가 loss의 연산에 개입하게 되면서 Key 입장에서만 고려되었던 patch token들이 Query 입장에서도 고려되게 되어 Query CLS token 중심의 학습이 깨지게 된다. (ViT의 본래 학습 과정과 반대 방향으로 학습이 이뤄진다)
     - 결론 : *CLS token(Query) 중심의 ViT 학습에 반하지 않으려면 Patch token feature가 직접적인 supervision을 받지 않도록 loss를 설계 해야한다.*
     - (0601) Method 1 Drop 
-- ## Method 2
+
+- ## Proposed Method 2
   - Training Pipeline
     ![Training_Pipeline](https://user-images.githubusercontent.com/62092317/185871715-abba77c5-788e-438f-b89c-7215ecfb2e7a.PNG)
   - Motivation
@@ -291,6 +276,18 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - 0623 : Rank 1 sample Visualize 및 비교 구현
   - 0625 : 전체 논문 구조도 수정(ViT그 자체보단 Proposed method를 강조하는 방향으로), Selecting patches, RPE 그림 수정
   - 0626 : Ablation study & Experimental results 
+
+- ## Visualization tools 
+   - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
+   - 0306 : Query image에 대한 Attention roll out 완료 
+   - 0310 : Query image에 대한 Visualize 결과 통합
+     <center><img src="https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png" width="600" height="400"></center>
+   - 0315 :  
+     - Training / Weight & Bias 를 통해 attention map 연동 완료
+     - HARDEST QUERY 출력 완료
+     - Positional Embedding visualize 완료
+   - 0320 : Weight and Bias logging added, Elemented weighted triplet loss added
+
 # Etc
   1. Matplotlib 사용법
    - Subplot 기본 [[LINK]](https://soooprmx.com/matplotlib%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%B0%8F-%EB%8B%A4%EB%A5%B8-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/)

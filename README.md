@@ -14,14 +14,10 @@
 
 # Short-term plan
  일주일 단위로 구성하는 단기 계획.   __읽은 논문은 bold체로 표시.__
-- 4/21 - 06/11
-  - 아이디어 구현 및 결과 확인 완료
-  - 한글 논문 작성 완료
-- 06/11 - 06/17 (기말 기간)
-  - 7월 중으로 영어 논문 작성
-  - 논리 전개 정리
-- 06/17 - 06/24
-  - 영어 논문 작성
+
+- 06/26 - 06/30
+  - main figure 강조 사항 수정, RPE, Patch selecting process figure 수정
+  - Experimental results , Ablation study 강조점 구상 
 ## 개념별로 논문들을 분류한다. 
 __읽은 것은 bold체__ 
 __그 중에서도 중요한 논문은 + *이탤릭체*__
@@ -137,20 +133,6 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 ## 4. Positional Encoding of Transformer 
   - ### 4.1 __On the relationship between self-attention and convolution layers (ICLR 2020)__
   - ### 4.2 __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__
-    - 4.1와 4.2 논문은 연계된 내용으로 attention mechanism이 convolution을 수행할 수 있는가?를 실험적으로 증명한다.
-    - 4.1는 __pixel 단위의 attention mechanism__ 이 convolution과 동일하게 동작할 수 있도록 하는 relative position encoding parameter를 수식적으로 유도해낸다.
-    - 4.2는 __patch 단위의 attention mechanism__ 이 (현재 거의 모든 vision transformer의 방식) convolution과 동일하게 동작할 수 있음을 실험적으로 증명한다. 또한, __transformer가 스스로 이를 학습해 나간다는 점에서 지금까지 CNN이 초반부 layer에 locality라는 inductive bias를 주었던 것이 classification task에 대해 올바른 inductive bias였음을 증명했다__ 는 점에서 강력한 근거로 사용할 수 있다. 
-      - CNN의 convolution 연산에 따른 nature인 locality inductive bias는 network가 classification을 잘 수행할 수 있도록 돕는 올바른 bias 이다.
-      - Self attention mechanism은 convolution 처럼 동작할 수 있는 capacity가 있음이 증명되었다. 그러나 내 생각은, 가능은 하지만 항상 그렇게 동작하거나 capacity가 충분하다고 보기는 어렵다.  
-      - Attention mechanism이 이를 배울 수 있도록 인위적으로 설정(?)하는 key는 positional embedding(learnable parameter)에 있다.
-    - 위 두 논문을 Inductive bias 관점에서 생각해보자
-      - CNN의 inductive bias인 locality가 transformer에선 왜 positional embedding의 설정에 따라 발현될 수 있는가?
-      - __"Convolution filter를 적용하는 것"과  "attention mechanism의 key,query dot product에서의 last term" (positional correlation matrix) 둘 다 data에 independent하다는 공통점이 있기 때문이다.__
-      - 즉, CNN filter의 특성 (size, stride 등)이 data에 따라 바뀌지 않듯이 key, query dot product의 last term patch들의 position 정보간의 관계에만 의존하기 때문에 또한 그러하다.
-      - __즉, network에 Inductive bias를 주기 위해선 network의 구성요소 중 input data에 independent한 위치에 주어야 한다는 것이다. 또는 그러한 요소를 network에 따로 만들어 주어야 한다. ViT에서 이를 만족하는 유일한 구성 요소가 바로 positional embedding 이다.(As far as I know, 다른 요소가 있을지는 생각해보자)__
-      - __이 사실을 깨달은 것이 매우 중요하다. "막연하게 positional embedding이 locality inductive bias가 될 수 있지 않을까?" 라는 생각이 "ViT 에선 Inductive bias를 주기 위해 positional embedding을 설계해야 한다" 라는 확신으로 바뀌기 때문이다.__
-      - 즉 내가 할일은 기존 CNN에서 사람들이 ReID를 잘 수행하기 위해 network에 주었던 specific한 inductive bias가 있다면 이를 찾고, 이를 positional embedding에 반영할 수 있는 방법을 찾는 것이다.  
-    - 한가지 주의해야할 점이 있다. __위 두 논문은, linear probing 단계에서 둘다 GAP를 사용하여 성능을 측정하였다. 3.2 논문의 실험 결과와 연결지어 생각해보고 논리 전개의 모순이 있는지 확인해야 한다.__ 
   - ### 4.3 __On position embeddings in BERT(ICLR 2021, 20/09/29)__ [[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.3%20On%20position%20embeddings%20in%20BERT.md)
   - ### 4.4  __Rethinking positional encoding in language pre-training (ICLR 2021, 20/06/28)__ [[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.4%20Rethinking%20positional%20encoding%20in%20language%20pre-training.md)
   - ### 4.5 __Do we Really Need Explicit Position Encodings for Vision Transformers?(21/02/22)__[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.5%20Do%20we%20Really%20Need%20Explicit%20Position%20Encodings%20for%20Vision%20Transformers.md)
@@ -162,10 +144,10 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 # IMPORTANT FACTS
   - Transformer를 이용한 Classification를 다루는 모든 논문의 benchmarking은 2.4(DeiT)와의 비교를 통해 이루어진다. ReID는 기본적으로 classification 이므로 참고해야할듯 하다.
   - Classification에서의 효율적인 positional encoding 방식은 relative positonal encoding이다. 이 과정에서 CLS token에 대한 고려는 반드시 이루어져야 한다. 
-  - 조사해본 결과, 2D relative positional encoding의 효용성에 대해선 아직 밝혀지지 않은 것이 많다. 21/07/29에 ICCV 2021에 submit 된 4.6에서도 이를 명시적으로 언급하고 있는것으로 보아, 내가 열심히만 한다면 논리적인 무언가를 만들어 낼 여지가 많아 보인다. __아직 밝혀지지 않은 것일 뿐, 새로운 방법은 무조건 존재 할것 같다.__ 
+  - 조사해본 결과, 2D relative positional encoding의 효용성에 대해선 아직 밝혀지지 않은 것이 많다. 21/07/29에 ICCV 2021에 submit 된 4.6에서도 이를 명시적으로 언급하고 있는것으로 보아, 내가 열심히만 한다면 논리적인 무언가를 만들어 낼 여지가 많아 보인다.  
   - 아쉽게도, 현재 성능이 좋은 ReID module 들은 아직 CNN에 의존하고 있다. ReID task가 많은 inductive bias를 요구한다는 반증이기도 하다. 연구할 여지가 많다는 점에서 좋은점일지도 모른다.
-  - *ViT는 CLS token을 query의 입장에서, Patch token을 Query의 입장에서 optimize하도록 설계되어 있다.* --> 간단하지만 굉장히 중요! 
-  - Patch token의 importance rank 
+  - *ViT는 CLS token을 query의 입장에서, Patch token을 Key의 입장에서 optimize하도록 설계되어 있다.* --> 간단하지만 굉장히 중요! 
+  - Patch token과 CLS token간 similarity에 기반한 importance rank 
       - ViT의 학습 과정 중, CLS token은 self-attention의 mechanism상 patch token들의 weighted summation 형태로 update된다.
       - CLS token과의 attention score가 높은 patch token일수록, model은 해당 patch token에 localize된 feature로 class를 판별한다. 이는 ViT의 attention을 visualize하는 방식에도 쓰이는 개념이다.
       - CLS token이 classifier의 FC layer에 곱해진 후, 각 class에 대한 확률 값으로 변환된다는 점에서 classifier의 weight parameter들은 각 class에 대한 대표 feature를 나타내는 벡터가 된다. 이는 Elemented weight triplet loss 에서도 등장한 개념이다.
@@ -191,8 +173,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   4. 이 positional embedding은 크게 두 종류로 나뉘는데, APE와 RPE이다.
   5. RPE는 vision 영역에서 efficacy가 충분히 검증되지 않았다. 또, 이것의 학습이 image에 대해 충분히 이루어지는지도 미지수이다.
   6. 이는 image와 sentence의 구조적 차이가 충분히 반영되지 않았기 때문이다. 이를 해결하기 위해 RPE에 여러 기법들이 적용된 논문들이 있다. Swin transformer는 RPE를 bias의 형태로 단순화하여 적용하였을 때 성능적으로 우수함을 입증하였다.
-  - ImageNet : <center><img src = "https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG" width="800" height="200"></center> 
-  - ReID dataset : <center><img src = "https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG" width="400" height="500"></center>
+  - ImageNet : <center><img src = "https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG" width="500" height="200"></center> 
+  - ReID dataset : <center><img src = "https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG" width="300" height="250"></center>
   7. Re-ID dataset은 여타 image dataset과 다르게, 모든 sample이 사람을 대상으로 하기 떄문에 sample간 correlation(즉, 형태적 유사성)이 높다. 즉 sample내 object의 형태가 비슷하기 때문에 patch의 위치가 갖는 의미가 다른 dataset에 비해 크다. 
   9. 따라서, PE가 갖는 특성을 활용해 ReID dataset을 효율적으로 학습할 수 있도록 explicit한 supervision을 주고자 한다.
   10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
@@ -201,7 +183,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 
 - ## Code Repository [[LINK]](https://github.com/SeongSuKim95/TransReID)
 - ## Structure of ViT based ReID   
-<center><img src="https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG" width="800" height = "400"></center>
+<center><img src="https://user-images.githubusercontent.com/62092317/173266708-e1180249-5e2f-4cda-aacd-f459c1ea980b.PNG" width="600" height = "300"></center>
   
 - ## Visualization tools 
    - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
@@ -228,7 +210,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
    - 0402 : Patch similarity를 기반으로 한 patch selecting algorithm 구현
    - 0406 : 학습이 진행됨에 따라(즉, Epoch이 늘어남에 따라), 학습의 근거가 되는 patch들의 비율을 점점 줄여나가도록 supervise
       - Ex) 초반 학습에선 sample의 50% patch만을 근거로 삼도록, 후반 학습에선 sample의 10% patch만으로도 학습이 이루어지도록
-        - <center><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="600" height="700"></center>
+        - <center><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="600" height="500"></center>
         - 기대 효과 - 모델이 similarity가 높은 patch에 더 집중할 수 있어, feature의 localization에 도움이 될것을 예상
         - 실험 결과 - mAP, Rank1 score 기준으로 학습에 큰 영향을 주지 않음
         - 원인 분석 - Simiarity 값이 softmax function을 통과하기 때문에, 모델은 이미 최상위 몇개의 patch에 집중한 상태이므로 하위 rank patch들의 영향력이 적음
@@ -264,8 +246,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - 결론 : *CLS token(Query) 중심의 ViT 학습에 반하지 않으려면 Patch token feature가 직접적인 supervision을 받지 않도록 loss를 설계 해야한다.*
     - (0601) Method 1 Drop 
 - ## Method 2
-  - Structure
-    ![Overall structure](https://user-images.githubusercontent.com/62092317/175780925-79361856-0926-40df-8a13-d3160ff85c67.PNG)
+  - Training Pipeline
+    ![Training_Pipeline](https://user-images.githubusercontent.com/62092317/185871715-abba77c5-788e-438f-b89c-7215ecfb2e7a.PNG)
   - Motivation
     - ViT의 구조적 특성을 Re-ID의 학습과정에 적극적으로 반영해보자!
     - Patch 단위로 image를 처리하는 ViT를 이용하여 Re-ID dataset의 특성을 modeling 할 수 있지 있을까?
@@ -306,9 +288,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - 0610 : Code clean up, Freeze
   - 0620 : Overall sturcture main figure fixed
   - 0620 : Positional Embedding Visualization
-  - 0623 : Rank 1 sample 비교하기
-    - 
-  - 0625 : 전체 논문 구조도 수정, Selecting patches, RPE 그림 수정
+  - 0623 : Rank 1 sample Visualize 및 비교 구현
+  - 0625 : 전체 논문 구조도 수정(ViT그 자체보단 Proposed method를 강조하는 방향으로), Selecting patches, RPE 그림 수정
   - 0626 : Ablation study & Experimental results 
 # Etc
   1. Matplotlib 사용법

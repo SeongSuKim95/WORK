@@ -31,7 +31,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
     4. (DeiT) Training data-efficient image transformers & distillation through attention
 3. Nature of Transformer
    1. When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations
-   2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810) [[Summary]](https://github.com/SeongSuKim95/WORK/blob/master/Paper_review/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
+   2. *__Do vision transformers see like convolutional neural networks?__* [[LINK]](https://arxiv.org/abs/2108.08810)
    3. *__How Do vision Transformers Work?(ICLR,2022)__*[[LINK]](https://arxiv.org/abs/2202.06709) [[CODE]](https://github.com/xxxnell/how-do-vits-work)
    4. On the Expressive Power of Self-Attention Matrices
    5. (LayerNorm) Improved Robustness of Vision Transformer via PreLayerNorm in Patch Embedding
@@ -127,7 +127,7 @@ __그 중에서도 중요한 논문은 + *이탤릭체*__
 ## 1. Attention + CNN 
 ## 2. About Transformer 
 ## 3. Nature of Transformer  
-  - ### 3.2 Do vision Transformers see like convolutional neural networks? [[Summary Link]](https://github.com/SeongSuKim95/WORK/blob/master/Paper_review/3.2%20Do%20Vision%20Transformers%20See%20Like%20Convolutional%20Neural%20Networks.md)
+  - ### 3.2 Do vision Transformers see like convolutional neural networks?
 ## 4. Positional Encoding of Transformer 
   - ### 4.1 __On the relationship between self-attention and convolution layers (ICLR 2020)__
   - ### 4.2 __Can Vision Transformer Perform Convolution? (ICLR 2022 underreview, 2021/11/02)__[[IDEA]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/4.1-2%20On%20the%20relationship%20between%20self-attention%20and%20convolution%20layers%2C%20Can%20Vision%20Transformer%20Perform%20Convolution%3F.md)
@@ -169,8 +169,11 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   4. 이 positional embedding은 크게 두 종류로 나뉘는데, APE와 RPE이다.
   5. RPE는 vision 영역에서 efficacy가 충분히 검증되지 않았다. 또, 이것의 학습이 image에 대해 충분히 이루어지는지도 미지수이다.
   6. 이는 image와 sentence의 구조적 차이가 충분히 반영되지 않았기 때문이다. 이를 해결하기 위해 RPE에 여러 기법들이 적용된 논문들이 있다. Swin transformer는 RPE를 bias의 형태로 단순화하여 적용하였을 때 성능적으로 우수함을 입증하였다.
-  - ImageNet : <center><img src = "https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG" width="500" height="200"></center> 
-  - ReID dataset : <center><img src = "https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG" width="300" height="250"></center>
+
+  - ImageNet 
+    <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173336210-a5342cad-1156-4dea-9515-f6d40d1a3878.PNG" width="500" height="200"></p> 
+  - ReID dataset
+    <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173336651-456a6d96-d6af-4e3f-abca-46cf49cd80ca.PNG" width="300" height="250"></p>
   7. Re-ID dataset은 여타 image dataset과 다르게, 모든 sample이 사람을 대상으로 하기 떄문에 sample간 correlation(즉, 형태적 유사성)이 높다. 즉 sample내 object의 형태가 비슷하기 때문에 patch의 위치가 갖는 의미가 다른 dataset에 비해 크다. 
   9. 따라서, PE가 갖는 특성을 활용해 ReID dataset을 효율적으로 학습할 수 있도록 explicit한 supervision을 주고자 한다.
   10. RPE가 갖는 특성을 활용하여 동일한 사람의 신체구조를 modeling한 loss를 설계 하고, 이것이 triplet 학습과정에서 반영되도록 한다. 
@@ -194,7 +197,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
    - 0402 : Patch similarity를 기반으로 한 patch selecting algorithm 구현
    - 0406 : 학습이 진행됨에 따라(즉, Epoch이 늘어남에 따라), 학습의 근거가 되는 patch들의 비율을 점점 줄여나가도록 supervise
       - Ex) 초반 학습에선 sample의 50% patch만을 근거로 삼도록, 후반 학습에선 sample의 10% patch만으로도 학습이 이루어지도록
-        - <center><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="600" height="500"></center>
+          <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173273611-fb8d167d-333a-4e91-a1e7-ce76dbca6fa0.PNG" width="480" height="400"></p>
         - 기대 효과 - 모델이 similarity가 높은 patch에 더 집중할 수 있어, feature의 localization에 도움이 될것을 예상
         - 실험 결과 - mAP, Rank1 score 기준으로 학습에 큰 영향을 주지 않음
         - 원인 분석 - Simiarity 값이 softmax function을 통과하기 때문에, 모델은 이미 최상위 몇개의 patch에 집중한 상태이므로 하위 rank patch들의 영향력이 적음
@@ -202,14 +205,14 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
       - Triplet loss 는 Anchor sample과 Positive sample의 feature distance를 줄이도록 설계되어 있으나, 두 sample(A,P)의 공통된 feature가 dominant하기 때문에 학습 과정이 차이점에 집중하지 못한다.
       - 목표 : Anchor sample과 positive sample간 비교시 non-dominant feature를 가깝게 하는데 집중할 수 있도록 triplet loss를 설계
       - CLS token은 self-attention mechanism속에서 patch token feature의 weighted summation 의 형태로 학습된다는 점을 이용
-        ![AP_similarity](https://user-images.githubusercontent.com/62092317/173285377-edd7935e-3260-4659-8ddd-c85181090223.PNG)
-        ![Patch_similarity](https://user-images.githubusercontent.com/62092317/173285387-e1741bf0-3d6c-402c-9d77-2d929f94d1a7.PNG)
+        <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173285377-edd7935e-3260-4659-8ddd-c85181090223.PNG"></p>
+        <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173285387-e1741bf0-3d6c-402c-9d77-2d929f94d1a7.PNG"></p>
         1. Anchor CLS token - Anchor Patch tokens 간의 similarity를 계산, similarity가 높은 상위 50%의 anchor patch를 선별
         2. Positive CLS token - Anchor Patch tokens 간의 similarity를 계산, similarity가 높은 상위 50%의 anchor patch를 선별
         3. 1과 2에서 선별된 두 patch 집합의 교집합에 해당하는 patch 선별
         4. Anchor와 Positive의 CLS token에서 선별된 patch들의 weighted summation을 뺀 값(Non-dominant feature) 사용
       - 얻어낸 non-dominant feature를 normalize한 후, anchor CLS token의 각 feature에 element-wise로 곱합 weight vector를 생성
-        ![Weighted_Triplet](https://user-images.githubusercontent.com/62092317/173286748-2cfe29dd-c3a7-4fb0-96fc-ea4cc6551a34.PNG)
+        <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173286748-2cfe29dd-c3a7-4fb0-96fc-ea4cc6551a34.PNG"></p>
       - Weight를 element-wise로 곱하는 것의 의미
         - Weight vector는 CLS token과 patch token간 similarity 기반으로 구함
         - Model이 triplet loss의 학습과정에서 Anchor sample과 Positive sample이 공통적으로 집중하는 patch들의 dominant feature를 제외한 나머지 부분을 효과적으로 배울수 있도록 지도
@@ -221,7 +224,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - 제안한 방법을 적용하였을때, 여러 dataset에 대한 일관성이 확보 되지 않음을 알게 되었다. (일부 hyperparameter setting의 Market 1501 data에 대해서만 성능이 향상, 거의 다 하락)
     - *ViT의 기본적인 동작을 간과한 나의 실수* 이다.
     - 분석
-      ![ViT_SA](https://user-images.githubusercontent.com/62092317/173295340-ab694654-281e-4a71-97b2-0713d5b46b84.PNG)
+      <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/173295340-ab694654-281e-4a71-97b2-0713d5b46b84.PNG"width="500" height="300"></p>
       - 그림 예시 : 4개의 patch token 에 대해 self-attention mechanism을 통해 output token이 생성되는 과정
       - *ViT의 모든 parameter는 CLS token을 Query의 입장으로, Patch token을 Key의 입장으로 optimize 한다.*
       - 각 token은 각자를 Query의 입장으로 SA를 수행하여 다음 layer로의 output을 생성하지만, ViT는 CLS token만을 가지고 loss를 구성하여 model을 supervise하기 때문에 *Query CLS token, Key patch token*에 중심을 두고 학습이 진행된다.
@@ -232,7 +235,8 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
 
 - ## Proposed Method 2
   - Training Pipeline
-    ![Training_Pipeline](https://user-images.githubusercontent.com/62092317/185871715-abba77c5-788e-438f-b89c-7215ecfb2e7a.PNG)
+    <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/185871715-abba77c5-788e-438f-b89c-7215ecfb2e7a.PNG"width="700" height="350"></p>
+
   - Motivation
     - ViT의 구조적 특성을 Re-ID의 학습과정에 적극적으로 반영해보자!
     - Patch 단위로 image를 처리하는 ViT를 이용하여 Re-ID dataset의 특성을 modeling 할 수 있지 있을까?
@@ -240,18 +244,18 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
     - ViT의 unique한 구조 중 하나인 positional embedding을 사용하여, Re-ID sample에 대해 사람의 각 신체 부위를 담고 있는 patch간 상대적 위치 관계를 model이 학습할 수 있도록 하자.
     - 같은 ID의 sample은 신체 부위의 상대적 위치 관계가 비슷하다는 사실을 model에게 supervise, 즉 주요 patch들간 relative positional bias 분포가 비슷하도록 유도
   - 0503 : Relative positional embedding Added [[Link : About RPE]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Explanation%20of%20RPE.md)
-  - <center><img src="https://user-images.githubusercontent.com/62092317/175779002-fa5a2da7-47b8-4770-a5ec-4338928a918e.PNG" width = "800" height = "400"></center>
+    <p align="center"><img src="https://user-images.githubusercontent.com/62092317/175779002-fa5a2da7-47b8-4770-a5ec-4338928a918e.PNG" width = "600" height = "300"></p>
   - 0505 : Position information modeling 설계 구현
     각 sample에 존재하는 important patch(Model이 집중하고 있는 patch)간 position 정보를 modeling하는 방식은 다음과 같다.
      1. 각 Sample에 대해 model이 집중하는 patch token을 선별하기 위해 classifier weight와 patch token간 similarity를 구한다.
      2. Similarity를 기반으로 중요도가 높은 patch들을 선별한다.[[LINK : Selecting patches]](https://user-images.githubusercontent.com/62092317/173366596-d88b797c-8df4-4b16-90b1-4cd0706c7f45.PNG)
      3. 선별된 patch들간의 위치관계 정보를 absolute positional embedding과 Relative positional embedding으로 얻는다. Transformer의 self-attention mechanism을 고려하여, 두 patch의 APE 내적에 RPE를 더한 값을 사용하기로 했다.
-    - <center><img src="https://user-images.githubusercontent.com/62092317/175778998-5ca7d4fd-f5b6-437b-b2c3-789038795319.PNG" width = "400" height = "400"></center>
-    - <center><img src = "https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG" width = "500" height = "400"/></center>
+    <p align="center"><img src="https://user-images.githubusercontent.com/62092317/175778998-5ca7d4fd-f5b6-437b-b2c3-789038795319.PNG" width = "300" height = "300"></p>
+    <p align="center"><img src = "https://user-images.githubusercontent.com/62092317/174062511-6ecdf60a-8886-4355-aa49-29bafe6d9b4d.PNG" width = "400" height = "320"/></p>
     각 관계에 대해 생성한 값을 concat하여 하나의 tensor로 만든다.
   - 0506 : Wandb Sweep file created
   - 0507-0508 : 어떤 loss를 사용하여 supervise?
-    - <center><img src ="https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png" width="600" height="300"/></center>
+    <p align="center"><img src ="https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png" width="600" height="300"/></p>
     - 가장 먼저 든 생각은 triplet loss 이다. Anchor와 positive sample들에 대해 생성한 position 정보들을 head, layer 별로 concat하여 vector를 만들고 Euclidean distance를 최소화 하는 방향을 사용했다.
     - 실험결과, mAP 측정시 초반 학습이 매우 강했으나 학습 중반부터 학습이 오히려 떨어지더니 loss가 발산해버렸다.
     - ## Triplet loss의 실패 원인 분석
@@ -281,7 +285,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
    - 0305 : Query image에 대한 Top 10 Rank gallery visualization 완료
    - 0306 : Query image에 대한 Attention roll out 완료 
    - 0310 : Query image에 대한 Visualize 결과 통합
-     <center><img src="https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png" width="600" height="400"></center>
+     <p align="center"><img src="https://user-images.githubusercontent.com/62092317/157599820-cb30c46e-e4b0-4a95-9584-fa64866b0327.png" width="600" height="400"></p>
    - 0315 :  
      - Training / Weight & Bias 를 통해 attention map 연동 완료
      - HARDEST QUERY 출력 완료
@@ -308,7 +312,7 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
         - TransReID-SSL[6.4] 논문에 나와있는 성능을 official code를 통해 재현하려고 하였는데, Market-1501은 재현이 잘되는 반면 MSMT17에 대해선 꽤 큰 폭으로 하락한 성능이 나오는 것을 확인하였다.
         - 처음엔 코드 설정의 문제인가 하고 hyperparameter및 configuration을 전부 확인해봤지만, 이상한점을 찾을 수 없었다.
         - Data loader 부분의 root directory 부분을 살펴보니, 내가 사용하고 있는 dataset과 경로가 다르게 설정되어있는 것을 알 수 있었다. 이는 [6.4]의 논문이 MSMT17을 사용한 반면, 나는 MSMT17-V2를 사용하여 발생한 차이였다. 
-        - <center><img src="https://user-images.githubusercontent.com/62092317/173303286-687583e8-7f84-4819-8653-6ed8c191ef1a.PNG" width="300" height="300"/></center>
+        <p align="center"><img src="https://user-images.githubusercontent.com/62092317/173303286-687583e8-7f84-4819-8653-6ed8c191ef1a.PNG" width="300" height="300"/></p>
         - MSMT17-V2는 MSMT17과 모든 spec이 같지만, 위 그림 처럼 얼굴부분이 전부 모자이크 처리 되어있다. 모자이크 처리 되어있는 상태의 dataset을 가지고 실험을 진행했기 때문에 재현이 되지 않은 것은 당연하다.
       - Cuhk03-np
         - Cuhk03 또한 new protocol로 촬영된 version인 Cuhk03-np를 사용해야한다.

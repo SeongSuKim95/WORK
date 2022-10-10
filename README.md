@@ -256,13 +256,14 @@ Idea ,Facts를 기반으로 Idea를 구상한다.
   - 0506 : Wandb Sweep file created
   - 0507-0508 : 어떤 loss를 사용하여 supervise?
     <p align="center"><img src ="https://user-images.githubusercontent.com/62092317/174062089-57c14519-57f8-4b69-97f9-b274077fb6de.png" width="600" height="300"/></p>
+    
     - 가장 먼저 든 생각은 triplet loss 이다. Anchor와 positive sample들에 대해 생성한 position 정보들을 head, layer 별로 concat하여 vector를 만들고 Euclidean distance를 최소화 하는 방향을 사용했다.
     - 실험결과, mAP 측정시 초반 학습이 매우 강했으나 학습 중반부터 학습이 오히려 떨어지더니 loss가 발산해버렸다.
     - ## Triplet loss의 실패 원인 분석
       - *Triplet loss의 성질과 position vector의 numerical한 특성을 고려하지 않았기 떄문*이다.
       - Triplet loss는 기본적으로 sample의 feature vector에 대해 적용되며, 이 feature vector를 euclidean space에 projection한 후 distance를 계산한다. 
       - 내가 추출한 position 정보는 Attention score에 기반한 값이기 떄문에, *feature가 아닌 similarity* 이다. Similarity는 Euclidean space에서 다루지 않고 probability density의 형태로 사용한다.
-      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다. [[Link : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
+      - 따라서, Self-attention mechanism의 전개와 동일하게 softmax를 도입하여 확률 분포의 형태로 만들고 분포의 유사도를 학습 loss를 사용하는 것이 맞다.[[LINK : Problem in using Triplet loss for similarity score]](https://github.com/SeongSuKim95/WORK/blob/master/%EC%B6%94%EA%B0%80%20%EC%84%A4%EB%AA%85%20%EC%9E%90%EB%A3%8C/Problem%20in%20using%20Triplet%20loss%20for%20similarity%20score.md)
       - Solution : KL divergence loss를 사용하자!
   - 0510 : Jensen-Shannon Divergence loss added
     - Anchor와 positive의 position vector 각각에 softmax를 취한 후 KL divergence를 구하자 loss가 발산하는 문제가 사라졌다.
